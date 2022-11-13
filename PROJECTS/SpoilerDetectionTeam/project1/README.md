@@ -3,8 +3,8 @@
 ## Project 1 - Spoiler Detection
 
 
-Content:\
+Content:
 
 NLP_Project_proposal.pdf - project proposal \
 NLP_Project_proposal.pptx - presentation \
-project_latex - folder with latex files \
+project_latex - folder with latex files 
