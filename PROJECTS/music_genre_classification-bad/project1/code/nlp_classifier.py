@@ -42,13 +42,15 @@ class XGBoost(NLPClassifier):
         self.le = preprocessing.LabelEncoder()
     
     def partial_fit(self, X, Y, classes):       
-        if self.model is None:
-            self.le.fit(classes)
+        if 'num_class' not in self.params:
             self.params['num_class'] = len(classes)
-            data = xgb.DMatrix(X, label=self.le.transform(Y))
+            self.le.fit(classes)
+        
+        data = xgb.DMatrix(X, label=self.le.transform(Y))
+
+        if self.model is None:
             self.model = xgb.train(self.params, data, self.boost_iter)
         else:
-            data = xgb.DMatrix(X, label=self.le.transform(Y))
             self.model = xgb.train(self.params, data, self.boost_iter, xgb_model=self.model)
     
     def predict(self, X):
