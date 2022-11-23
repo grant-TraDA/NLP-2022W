@@ -1,0 +1,4 @@
+project1/code/data/*
+project1/code/*/models/*
+project1/code/*/predictions/*
+project1/code/__pycache__/*
