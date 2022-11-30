@@ -1,0 +1,76 @@
+\section{Approach and research methodology}
+
+\subsection{Datasets}
+While trying to find possible datasets for our project it was important to us for the song lyrics to be in their raw form. That means that they should not be transformed into e.g. bag-of-words model. The reason for this decision was that if we would like to use prepared models in a real-world scenario new song lyrics could be used with minimal preparation. What is more, as the language evolves all the time, with this approach there is still a possibility of further training of the models on song lyrics with the presence of not previously known words. And last but not least, we also wanted to minimize the risk of worse performance of prepared models which could be caused by simplifying the assumptions.
+
+The effect of making this decision is the fact that we could not choose e.g. the musiXmatch dataset (the official lyrics collection of the Million Song Dataset \cite{Bertin-Mahieux2011}) as the dataset for conducting the experiments. This very well-known dataset consists of an enormous number of song lyrics which are unfortunately kept in a bag-of-words model form. But as we will not use this dataset, we also will not focus on its description.
+
+We have found two datasets that meet our expectations:
+\begin{itemize}
+    \item \textit{Song lyrics from 79 musical genres} dataset from Kaggle website \cite{KaggleDataset},
+    \item \textit{MetroLyrics} dataset processed and put in a GitHub repository \cite{GithubDataset}.
+\end{itemize}
+
+In the description of the first dataset, we can find the information that the dataset consists of 379 893 song lyrics from 4239 artists. Around 50\% of the song lyrics are in English and we will probably test our models on them. Information about the artists is kept in a separate file and contains a list of music genres each artist is connected with. As we plan to predict only one music genre for each song we will have to preprocess this dataset by reducing these lists to individual genres and assigning them to song lyrics of appropriate artists. Furthermore, song lyrics also need some preprocessing as they contain punctuation and span across multiple lines.
+
+By contrast, the second dataset requires minimal work on our site. It was initially published on Kaggle website and consisted of 362 237 song lyrics from 18231 artists. The majority of song lyrics (probably around 60\%) were in English. Unfortunately, this dataset was removed from Kaggle website and we were not able to find it in its original form anywhere else. We have found a preprocessed version of it in a GitHub repository of a students' project performed by University of California students in 2018. This version's song lyrics have punctuation removed and contain only one genre for each entry. Based on descriptions of the original dataset we expect 11 genres and an unbalanced dataset with highly frequent \textit{Rock} label.
+
+Finally, in case of problems connected to data we are considering creating our own dataset. This would be possible with the usage of Spotify API \cite{Spotify} and Genius API \cite{Genius}, which are well documented. We would use Spotify API to get recommendations of songs for chosen genres and Genius API for lyrics extraction. In comparison with both found datasets, our dataset would be a lot smaller but definitely balanced.
+
+\subsection{Embeddings}
+
+One of the key problems in the domain of natural language processing has to be the question of how to use words in a model which only understands numbers. This question sparked numerous attempts of representing language in a mathematical way. One can always assign each unique word a different number and in this way encode any language into the computer, but this is insufficient when it comes to using this encoded representation. It was rather clear, that in order for such transformation to be in any way useful, the original meaning of the word should be embedded into this numeric representation itself. This word embedding ought to be treated as a vector in a given, high-dimensional space. For a given model dimensionality is fixed, therefore each word is represented by a vector of a set length, typically a hundred or so numeric values.
+
+There is still a task of creating a model capable of such transformations. It has a couple of possible approaches, mainly prediction-based and count-based. The second one, although simpler, will not be described here, since all methods described further make use of the first approach. Prediction-based word embedding models share a common trait, which unsurprisingly is that the embedding for a word was learned by performing the task of predicting given word \cite{baroni}. This definition does not set any requirements for the prediction itself, and, in fact, different approaches have been used successfully, such as the continuous Bag-of-Words Model (CBOW) and  continuous Skip-gram Model \cite{mikolov2013}.
+
+There is a single more distinction for the different techniques used, which is significant for this work. The meaning of some words is not dependent on their structure or origin, but on the context in which they are used. In the case of homonyms, it is impossible to state the singular meaning of the word without context, e.g. bank as a financial institution vs. side of a river or play as in theatre vs. as in sport. More traditional embeddings do not incorporate the context of a word in determining its embedding. These models are called static or non-contextualized. The ones that do generate differentiable vectors depending on the context are subcategorized as contextualized word embeddings. Despite the described advantage of the latter method, prior has proven to be successful in multiple cases, such as GloVe \cite{glove} or fastText \cite{fastText}.
+
+Other techniques which prove promising are ELMo \cite{elmo}, a deep bidirectional language model, which is pre-trained on a large text corpus and, extracting contextualized word embedding form, pre-trained Google’s Bidirectional Encoder Representations from Transformers (BERT) \cite{bert}. 
+
+Little has been said about using word embedding in the context of music lyrics. \cite{musicWordEmbed} describes the process of training the word embedding model strictly on music lyrics, but lacks proper evaluation methods to be comparable to other works. This means that in order to reach state-of-the-art we are bound to testing various methods of word embedding, retraining them whenever it is possible. 
+
+
+
+\subsection{Classification models}
+
+We want to test a few varying classification models for this specific task. We will consider Naive Bayes classifier, Support Vector Machine, XGBoost, and Convolutional Neural Network.
+
+Naive Bayes is a classifier based on Bayes' theorem known for good performance on real-world tasks despite being a simple model. It is fast and good at dealing with unbalanced data. It has also widespread applications on text classification tasks \cite{naiveBayesRef}.
+
+Support Vector Machine tries to find a hyperplane that best separates samples of different classes. It is often used for text classification tasks and historically achieved great results \cite{svmRef}.
+
+XGBoost \cite{xgboostRef} is a decision-tree based algorithm that uses a gradient boosting method. It shows great performance on large-scale tasks and is a very flexible and versatile tool.
+
+Convolutional Neural Networks are one of the primarily used types of neural networks used commonly in both image and text classification \cite{cnnRef}. Their main feature is using layers with convolution filters that are applied to feature vectors.
+
+As for CNN architecture, we want to test a few different optimizers, such as Adam optimizer \cite{adamRef}, Stochastic Gradient Descent and AdaDelta optimizer \cite{adadeltaRef}.
+
+% Harris hawk nie bo nie ma gotowca zaimplementowanego w żadnej bibliotece więc pewnie będzie problem z użyciem tego
+
+\subsection{Sentiment analysis}
+
+It is a well-known fact that music can convey deep emotions to listeners. These emotions are present in both melody and lyrics. In this research, we decided to study the connection between those emotions contained in lyrics and the song genre. To do this we want to include sentiment analysis when classifying song lyrics to the song's genre. Since emotions in song lyrics are often non-binary we want to consider a model that can recognize more varying emotions.
+
+We decided to use an already pre-trained model for emotion recognition called Emotion English DistilRoBERTa-base \cite{hartmann2022emotionenglish}.
+The model was created by fine-tuning DistilRoBERTa-base and training it on the balanced dataset of $2800$ observations for each emotion summing up to 20k observations in total.
+
+% Ten model ma accuracy 66% więc bez szału więc wolałam tego nie pisać...
+% Na jego stronce jest jednak wypisane parę papierów które z niego korzystało więc fajnie że jest gdzieś faktycznie używany
+% Inny z Hugging Face:
+% https://huggingface.co/bhadresh-savani/bert-base-uncased-emotion
+% Ten model ma niby wyższe accuracy ale jest to testowane na dziwnych datasetach więc nwm
+
+
+The model predicts Ekman's six basic emotions, that is anger, disgust, fear, joy, sadness, surprise, and an additional neutral class - summing up to seven labels.
+
+\subsection{Modified approach using sentiment analysis model and data fusion technique}
+
+As mentioned above, besides comparing different word embedding techniques and classifiers, we want to test another, significantly modified approach. We want to take advantage of already existing, pre-trained sentiment analysis models and see if they can help to improve the accuracy of prepared architectures. To do that we will make use of methods known from multi-modal machine learning (of course we only have one modality).
+
+The plan is to divide song lyrics in half. The first part will serve as an input to the word embedding model and the second to the sentiment analysis model. As outputs we will get an embedding of passed words and a vector of probabilities of different emotional states. These outputs, even though take the same form of numerical vectors, have different meanings. What is more, the output of the sentiment analysis model can be seen as a final decision as it contains information understandable to humans in contrast to the received embedding. However, the origins of these outputs may have common parts, e.g. reoccurring choruses, and because of that not as much information may be introduced in the second part of the song lyrics as would in the case of a new modality. Regardless of these considerations, we need to make use of data fusion techniques.
+
+There are a lot of data fusion techniques. They can be divided into groups such as early fusion or late fusion. Early fusion is the process of merging data from multiple sources before conducting the analysis. This data can be described as input data, even though it is often already preprocessed, e.g. in the form of embeddings. An example of early fusion is simple concatenation of input data in the form of numerical vectors, where the resulting vector can be passed as input to the next module in the model's architecture. Late fusion is a concept similar to an ensemble. Classifiers are trained for all modalities and their outputs are merged to obtain a single decision e.g. by using weighted voting.
+
+We are going to use an early fusion method even though part of our data will be in the final form. The method is called cross-modal attention \cite{Krishna2020MultimodalER} and is based on the usage of multi-head scaled dot product attention \cite{vaswani2017attention}. In contrast to self-attention, query matrix comes from a different modality than key and value matrices. This can help to capture relationships between different modalities. In our case, we will apply this method to only one modality by using the output of the sentiment analysis model for the query matrix and embedding of the first part of song lyrics for key and value matrices. This will lead to sentiment-guided lyrics feature output, which will be introduced as input data to a classifier.
+
+We want to test if this approach will obtain better accuracy for the music genre classification problem. By using the sentiment analysis model and cross-modal attention mechanism we make our model more complex and introduce more trainable parameters. We also make use of transfer learning. These arguments weigh in favour of this approach. However, we only use the first halves of song lyrics to obtain embeddings and we do not introduce the second modality, even though we use a multi-modal data fusion technique, so predicted gains are lower than in the case of multiple modalities. As there exist arguments from both sides it is hard to tell what will be the outcome of the experiment.

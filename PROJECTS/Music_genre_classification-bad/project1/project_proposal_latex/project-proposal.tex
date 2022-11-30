@@ -1,0 +1,117 @@
+%
+% File main.tex
+%
+% Contact: car@ir.hit.edu.cn, gdzhou@suda.edu.cn
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt]{article}
+\usepackage{comment}
+\usepackage{acl2015}
+\setlength\titlebox{6cm}
+\usepackage{times}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{latexsym}
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{csquotes}
+\usepackage{tabularx}
+
+%\setlength\titlebox{5cm}
+
+% You can expand the title box if you need extra space
+% to show all the authors. Please do not make the title box
+% smaller than 5cm (the original size); we will check this
+% in the camera-ready version and ask you to change it back.
+
+
+\title{Music genre classification based on song lyrics - comparison between different word embedding techniques and classifiers \\Project Proposal for NLP Course, Winter 2022}
+
+\author{Bartłomiej Eljasiak \\
+  Warsaw University of Technology \\
+  {\tt\small bartlomiej.eljasiak.stud@pw.edu.pl} \\\And
+  Aleksandra Nawrocka \\
+  Warsaw University of Technology \\
+  {\tt\small aleksandra.nawrocka.stud@pw.edu.pl} \\
+  \AND
+  Dominika Umiastowska \\
+  Warsaw University of Technology \\
+  {\tt\small dominika.umiastowska.stud@pw.edu.pl} \\\And 
+  supervisor: Anna Wróblewska\\
+  Warsaw University of Technology \\
+  {\tt\small anna.wroblewska1@pw.edu.pl}\\}
+
+\date{}
+
+\begin{document}
+\raggedbottom
+% Gdy nie ma ragged bottom to latex dodaje odstępy między paragrafami żeby wypełnić całą przestrzeń na stronie!
+
+\maketitle
+
+\vspace{5em}
+
+\begin{abstract}
+Music genre classification (MGC), although a well-known task, still remains challenging in the domain of Music Information Retrieval. We tackle the problem of MGC based solely on lyrics and try to solve it using a solution composed of a state-of-the-art word embedding method tuned for this problem and a separate classification model. Our main contribution is the comparison between different word embedding methods, classification techniques and optimization techniques, which in the domain of MGC is currently lacking. The novelty comes with an additional approach in the form of testing the impact of enriching the words with their sentiment obtained using a separate model.
+
+
+\begin{comment}
+Music genre classification (MGC), although a well-known task, still remains challenging in the domain of Music Information Retrieval. We tackle the problem of MGC based solely on lyrics, but in the process we also test the impact of enriching the words with their sentiment obtained using a separate model. Our solution is composed of a state-of-the-art word embedding method tuned for this problem and a separate classification model. The novelty comes in the form of providing the comparison between different word embedding methods, classification techniques and optimization techniques, which in the domain of MGC is currently lacking. 
+\end{comment}
+\end{abstract}
+
+% Jakieś linki w podobnej tematyce do naszej pracy
+% przejrzałem - Bartek
+% https://aclanthology.org/C14-1059.pdf
+% https://aclanthology.org/I11-1071.pdf
+% https://aclanthology.org/D12-1054.pdf
+% https://aclanthology.org/2021.nlp4musa-1.7.pdf
+% https://aclanthology.org/2020.nlp4musa-1.6.pdf
+% https://archives.ismir.net/ismir2010/paper/000045.pdf
+% https://www.researchgate.net/publication/224576802_Exploiting_genre_for_music_emotion_classification
+
+
+\input{goal}
+
+\input{significance}
+
+\input{concept}
+
+\input{approach}
+
+% include your bib file like this:
+\printbibliography
+
+\begin{comment}
+
+Bartek:
+-> ustalić metodę tworzenia (albo wiele) embeddingów: 
+- na zdaniach: BERT...
+- na słowach: word2vec...
+-> dokumenty na których chcemy bazować - dotyczące klasyfikacji muzyki i ew. coś z sentymentem i dotyczące poszczególnych metod
+-> Abstract
+
+Ola:
+-> fusion methods (jak połączyć tekst z sentymentem)
+-> znaleźć bazy danych (czy 1 czy chcemy połączyć wiele/testować na wielu)
+-> Concept and work plan
+
+Dominika:
+-> poszukać informacji na temat sentymentu:
+- czy chcemy zrobić sentyment na słowach, na zdaniach, na zwrotkach(?) czy na całym tekście.
+- ile typów sentymentu chcemy klasyfikować i jakie są dostępne przetrenowane modele (ew. poszukać zbiorów danych z tekstami piosenek i sentymentem)
+-> przetestujemy kilka standardowych metod optymizacji + harris hawk.
+-> architektura klasyfikatora (sieć neuronowa lub XGBoost, SVM...) <- też możemy potestować różne.
+-> The scientific goal of the project
+
+Na później:
+-> Ustalić całą architekturę rozwiązania, przepływ danych...
+
+
+\end{comment}
+
+
+\end{document}
+
+
