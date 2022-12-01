@@ -1,0 +1,11 @@
+name: nlp
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.11
+  - notebook
+  - nb_conda_kernels
+  - ipykernel
+prefix: /home/marneusz/anaconda3/envs/nlp
