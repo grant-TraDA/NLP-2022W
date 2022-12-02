@@ -12,6 +12,7 @@ All files can be found in a 'project1' subfolder:
 
 Overleaf project: https://www.overleaf.com/project/635d575531fba28174a6c7c2
 
+
 ### Stage 2
 
 All files can be found in a 'project1' subfolder:
