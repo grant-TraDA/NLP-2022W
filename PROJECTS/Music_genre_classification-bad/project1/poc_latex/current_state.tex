@@ -1,0 +1,24 @@
+\section{Current state of the project}
+Our project is divided into two parts. Currently, we are working on the main part, which consists of testing different embedding methods and classifiers for the MGC problem. To this date, we have tested one embedding method (GloVe) with four classifiers: Naive Bayes, linear SVM, XGBoost and CNN. Tests were performed on the MetroLyrics dataset. The results are in Table \ref{tab:results}.
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{0.52\textwidth}{lXXX}
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{Balanced accuracy} & \textbf{F1 score} \\\hline
+Naive Bayes & 15.43\% & 16.48\% & 9.66\% \\
+Linear SVM & 46.18\% & 20.55\% & 42.78\% \\
+XGBoost & 30.39\% & 13.20\% & 31.17\% \\
+CNN & 50.91\% & 25.84\% & 48.72\% \\
+\end{tabularx}
+\caption{Current results}
+\label{tab:results}
+\end{table}
+
+In our implementation, we make use of the following libraries for embedding methods and classifiers:
+\begin{itemize}
+    \item Spark NLP/NLU (GloVe),
+    \item sklearn (Naive Bayes, linear SVM),
+    \item xgboost (XGBoost).
+\end{itemize}
+
+As GloVe produces tables of size $\{\textrm{number\_of\_words}\}\times 100$ as output and we need vectors of the same length as inputs to our classifiers, we decided to, firstly, resize the embeddings to size $400\times 100$ (by taking first 400 rows or adding rows with zeros) and secondly, flatten the resulting tables.
