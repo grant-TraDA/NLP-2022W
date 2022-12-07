@@ -6,11 +6,10 @@ from joblib import dump, load
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import SGDClassifier
 from tensorflow.keras import layers, models
-from xgboost import XGBClassifier
 tf.get_logger().setLevel('ERROR')
 
 class NLPClassifier(ABC):
-    def __init__(self, ):
+    def __init__(self):
         self.model = None
         self.name = None
 
@@ -62,9 +61,8 @@ class XGBoost(NLPClassifier):
         self.model.load_model(filename)
 
 class CNN(NLPClassifier):
-    def __init__(self, vec_len, class_count, optimizer, epochs=1):
+    def __init__(self, vec_len, class_count, optimizer):
         self.name = 'cnn'
-        self.epochs = epochs
 
         model = models.Sequential()
         model.add(layers.Conv1D(8, 3, padding='same', activation='relu', input_shape=(vec_len, 1)))
@@ -87,7 +85,7 @@ class CNN(NLPClassifier):
     def partial_fit(self, X, Y, classes):
         X_proc = X.reshape(*X.shape, 1)
         Y_proc = Y.reshape(-1, 1)
-        self.model.fit(X_proc, Y_proc, epochs=self.epochs)
+        self.model.fit(X_proc, Y_proc)
 
     def predict(self, X):
         pred = np.argmax(self.model.predict(X.reshape(*X.shape, 1)), axis=1)
