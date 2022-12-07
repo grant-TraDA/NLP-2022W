@@ -28,8 +28,8 @@ class GloVe(NLPEmbedding):
 
 class SmallBert(NLPEmbedding):
     def __init__(self, max_words):
-        self.model = nlu.load('bert')
-        self.name = 'bert'
+        self.model = nlu.load('en.embed.bert.small_L2_128')
+        self.name = 'smaller-bert'
         self.max_words = max_words
         self.embedding_size = 128
 
@@ -44,9 +44,24 @@ class SmallBert(NLPEmbedding):
 class Bert(NLPEmbedding):
     def __init__(self, max_words):
         self.model = nlu.load('en.embed.bert')
-        self.name = 'big-bert'
+        self.name = 'bert'
         self.max_words = max_words
         self.embedding_size = 768
+
+    def embed_lyrics(self, data):
+        embeddings = self.model.predict(data, output_level='document')
+        return np.array([self.__process_embedding(embedding) for embedding in embeddings.word_embedding_bert])
+
+    def __process_embedding(self, embedding):
+        embedding.resize((self.max_words, self.embedding_size), refcheck=False)
+        return embedding.flatten()
+
+class LargeBert(NLPEmbedding):
+    def __init__(self, max_words):
+        self.model = nlu.load('en.embed.bert.large_uncased')
+        self.name = 'large-bert'
+        self.max_words = max_words
+        self.embedding_size = 1024
 
     def embed_lyrics(self, data):
         embeddings = self.model.predict(data, output_level='document')
