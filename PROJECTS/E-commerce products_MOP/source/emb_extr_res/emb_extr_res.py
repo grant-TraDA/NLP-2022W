@@ -4,6 +4,7 @@ import pandas as pd
 
 def get_embeddings_df(path):
     df = pd.read_csv(path, sep=';')
+    df.columns = [x.replace(',', '') for x in df.columns]
     temp = df['embedding'].str.split(',', expand=True)
     temp = temp.apply(pd.to_numeric, axis=1)
     df = df.drop(columns=['embedding'])

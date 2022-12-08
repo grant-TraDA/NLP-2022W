@@ -8,3 +8,9 @@ SIMILARITY_PATH = path.join(REPO_PATH, r'similarity\30-11-2022\\')
 PRETRAIN_OUTPUT_PATH = path.join(REPO_PATH, r'pretraining_output\30-11-2022\\')
 
 
+# dataset params
+
+TYPE = 'cameras'
+SIZE = 'medium'
+
+
