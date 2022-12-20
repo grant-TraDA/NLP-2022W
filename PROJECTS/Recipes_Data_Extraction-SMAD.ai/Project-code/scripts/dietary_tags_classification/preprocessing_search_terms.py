@@ -4,7 +4,7 @@ from ast import literal_eval
 from tqdm import tqdm
 
 DATAPATH = "dataset/recipes_w_search_terms.csv"
-TAGSPATH = "misc/selected_tags.json"
+TAGSPATH = "misc/categories_to_tags_mappings.json"
 SAVEPATH = "dataset/ingredients_search_tags.csv"
 
 

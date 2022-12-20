@@ -129,3 +129,10 @@ dmypy.json
 .pyre/
 
 dataset/*
+*.ipynb
+lightning_logs/*
+wandb/*
+scripts/dietary_tags_classification/wandb/*
+dietary_tags_classification/*
+models/*
+logs/*

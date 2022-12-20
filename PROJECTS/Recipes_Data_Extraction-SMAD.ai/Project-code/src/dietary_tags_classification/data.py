@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 
+
 class DietaryTagsDataset(torch.utils.data.Dataset):
     """Dataset class for dietary tags"""
 
@@ -24,7 +25,9 @@ def get_collate_function(tokenizer):
 
     def collate_function(batch):
         texts, tags = zip(*batch)
-        texts = tokenizer(texts, return_tensors="pt", padding=True)
+        texts = tokenizer(
+            texts, return_tensors="pt", padding=True, truncation=True
+        )
         tags = torch.tensor(np.array(tags))
         return texts, tags
 

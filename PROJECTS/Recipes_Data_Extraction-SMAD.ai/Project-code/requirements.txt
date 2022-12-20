@@ -4,6 +4,7 @@
 #
 #    pip-compile requirements.in
 #
+--extra-index-url https://mchrabaszcz:SQW97gFa3yDj3vZQxks5q3aG@ns31075295.ip-51-77-53.eu:8081/repository/sig-delta-pipy/simple
 
 absl-py==1.3.0
     # via tensorboard

@@ -4,7 +4,7 @@ import torch
 import yaml
 from pytorch_lightning import Trainer
 from sklearn.model_selection import train_test_split
-from transformers import BertTokenizer
+from transformers import AutoTokenizer
 from src.dietary_tags_classification.data import (
     DietaryTagsDataset,
     get_collate_function,
@@ -30,13 +30,18 @@ def preprocess_data(tokenizer):
     data = pd.read_csv(config["data"]["csv_path"]).dropna()
     if config["data"]["num_examples_to_use_for_training"] > 0:
         data = data.sample(config["data"]["num_examples_to_use_for_training"])
-    texts = data.iloc[:, config["data"]["ingredients_index"]].values
+    texts = data[config["data"]["ingredients_column_name"]].values
     tags = data[config["data"]["tags_to_use"]].astype(float)
     tags_names = list(tags.columns)
     tags = tags.values
     train_texts, test_texts, train_tags, test_tags = train_test_split(
         texts, tags, test_size=config["data"]["test_size"]
     )
+    if config["model"].get("pos_classes_weight") is not None:
+        pos_class_count = torch.sum(torch.tensor(train_tags), dim=0)
+        neg_class_count = train_tags.shape[0] - pos_class_count
+        pos_class_weight = neg_class_count / pos_class_count
+        config["model"]["pos_classes_weight"] = pos_class_weight
     train_dataset = DietaryTagsDataset(train_texts, train_tags)
     test_dataset = DietaryTagsDataset(test_texts, test_tags)
     collate_fn = get_collate_function(tokenizer)
@@ -56,17 +61,20 @@ def preprocess_data(tokenizer):
 
 
 def main():
-    tokenizer = BertTokenizer.from_pretrained(
+    tokenizer = AutoTokenizer.from_pretrained(
         config["tokenizer"]["pretrained_path"]
     )
     train_dataloader, test_dataloader, tags_names = preprocess_data(tokenizer)
     model = DietaryTagsClassifierTrainer(
         tags_names=tags_names, **config["model"]
     )
-    wandb_logger = WandbLogger(
-        project="dietary_tags_classification", config=config
-    )
-    wandb_logger.watch(model)
+    if config['use_wandb_logger']:
+        wandb_logger = WandbLogger(
+            project="dietary_tags_classification", config=config
+        )
+        wandb_logger.watch(model)
+    else:
+        wandb_logger = None
     trainer = Trainer(logger=wandb_logger, **config["trainer_params"])
     trainer.fit(model, train_dataloader, test_dataloader)
     trainer.save_checkpoint("models/current_model")
