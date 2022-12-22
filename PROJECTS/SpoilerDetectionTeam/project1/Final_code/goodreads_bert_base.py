@@ -14,7 +14,7 @@ from transformers import DataCollatorWithPadding
 from transformers import TFAutoModelForSequenceClassification
 from datasets import Dataset
 
-DATA_PATH = "/raid/shared/pwesolowski/NLP"
+DATA_PATH = "./data"
 
 urls = [
     "https://spoiler-datasets.s3.eu-central-1.amazonaws.com/goodreads_balanced-train.json.gz",
@@ -131,12 +131,12 @@ csv_logger = tf.keras.callbacks.CSVLogger(
 from timeit import default_timer as timer
 
 start = timer()
-model.fit(
-    x=tf_goodreads_train,
-    validation_data=tf_goodreads_val,
-    epochs=3,
-    callbacks=[model_checkpoint_callback, csv_logger],
-)
+# model.fit(
+#     x=tf_goodreads_train,
+#     validation_data=tf_goodreads_val,
+#     epochs=3,
+#     callbacks=[model_checkpoint_callback, csv_logger],
+# )
 end = timer()
 print("Number of seconds spent fitting")
 print(end - start)

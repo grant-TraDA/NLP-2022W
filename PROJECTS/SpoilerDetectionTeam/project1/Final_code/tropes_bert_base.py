@@ -12,6 +12,8 @@ from transformers import DataCollatorWithPadding
 from transformers import TFAutoModelForSequenceClassification
 from datasets import Dataset
 
+DATA_PATH = "./data"
+
 model_name = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
@@ -66,13 +68,13 @@ def tropes_to_tf(tropes_list):
 
 
 tropes_train = get_reviews_from_tropes(
-    "/raid/shared/pwesolowski/NLP/tvtropes_books/tvtropes_books-train.json"
+    f"{DATA_PATH}/tvtropes_books/tvtropes_books-train.json"
 )
 tropes_test = get_reviews_from_tropes(
-    "/raid/shared/pwesolowski/NLP/tvtropes_books/tvtropes_books-test.json"
+    f"{DATA_PATH}/tvtropes_books/tvtropes_books-test.json"
 )
 tropes_val = get_reviews_from_tropes(
-    "/raid/shared/pwesolowski/NLP/tvtropes_books/tvtropes_books-val.json"
+    f"{DATA_PATH}/tvtropes_books/tvtropes_books-val.json"
 )
 
 tf_tropes_train = tropes_to_tf(tropes_train)
@@ -131,12 +133,12 @@ csv_logger = tf.keras.callbacks.CSVLogger(
 from timeit import default_timer as timer
 
 start = timer()
-model.fit(
-    x=tf_tropes_train,
-    validation_data=tf_tropes_val,
-    epochs=3,
-    callbacks=[model_checkpoint_callback, csv_logger],
-)
+# model.fit(
+#     x=tf_tropes_train,
+#     validation_data=tf_tropes_val,
+#     epochs=3,
+#     callbacks=[model_checkpoint_callback, csv_logger],
+# )
 end = timer()
 print("Number of seconds spent fitting")
 print(end - start)
