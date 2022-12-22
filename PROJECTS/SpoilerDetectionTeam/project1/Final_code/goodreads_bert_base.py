@@ -186,7 +186,7 @@ from itertools import chain
 exclude_reviews = set(x["review_id"] for x in chain(goodreads_train, goodreads_test))
 len(exclude_reviews)
 whole_goodreads_test = []
-file = f"{DATA_PATH}/goodreads/goodreads_review_spoiler.json"
+file = f"{DATA_PATH}/goodreads/goodreads_reviews_spoiler.json"
 
 with open(file, "r") as f:
     for line in tqdm(f):

@@ -30,7 +30,7 @@
     -rw-rw-r-- 1 pwesolowski pwesolowski   12481658 Nov 24 18:20 goodreads_balanced-test.json.gz
     -rw-rw-r-- 1 pwesolowski pwesolowski  100580256 Nov 24 18:20 goodreads_balanced-train.json.gz
     -rw-rw-r-- 1 pwesolowski pwesolowski   12474188 Nov 24 18:20 goodreads_balanced-val.json.gz
-    -rw-rw-r-- 1 pwesolowski pwesolowski 1882934869 Nov 20 15:58 goodreads_review_spoiler.json
+    -rw-rw-r-- 1 pwesolowski pwesolowski 1882934869 Nov 20 15:58 goodreads_reviews_spoiler.json
 
     data/imdb:
     total 7599292
@@ -50,9 +50,11 @@
     ```
 
 4. Install the requirements using `Final_code/requirements.txt`.
-5. Reproducing results:
-6. - Goodreads: You can run the `goodreads_bert_base.py` or `goodreads_distilbert.py`. In addition, it is recommended that you use tee, i.e., `python some_script.py 2>&1 | tee log_file.log`.
+5. Reproducing results (note that 16GB RAM may not be enough!):
+   - Goodreads: You can run the `goodreads_bert_base.py` or `goodreads_distilbert.py`. In addition, it is recommended that you use tee, i.e., `python some_script.py 2>&1 | tee log_file.log`.
    - TV Tropes Books: You can run the `tropes_bert_base.py` or `tropes_distilbert.py`
    - IMDB: you can see the `imdb_experiments.ipynb` notebook. Note that this is extremely large dataset, and you need a lot of memory!
    - Interpretability of the models, see `lime-bert.ipynb` or `lime-distilbert.ipynb`
-In all files provided, the code responsible for fitting the models is commented out!
+
+   In all files provided, the code responsible for fitting the models is commented out!
+   - Regarding the evaluation of IMDB model on different datasets (with optional fine-tuning), the code is available [here](https://colab.research.google.com/drive/1w6dncrNWwVT7nNNA51yWfDUdNW6U9pP5?usp=sharing). However, the notebook was modified on-the-fly depending on the specific experiment. In addition, the kernel was restarted many times because we wanted to draw a better GPU.

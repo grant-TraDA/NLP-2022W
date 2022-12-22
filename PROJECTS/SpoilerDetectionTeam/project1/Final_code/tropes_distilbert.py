@@ -172,3 +172,10 @@ for batch_data, batch_labels in tqdm(tf_tropes_test):
     fn.update_state(batch_labels, preds >= 0.5)
     tp.update_state(batch_labels, preds >= 0.5)
     tn.update_state(batch_labels, preds >= 0.5)
+
+print(f"AUC={auc.result().numpy()}")
+print(f"ACC={acc.result().numpy()}")
+print(f"FP={fp.result().numpy()}")
+print(f"FN={fn.result().numpy()}")
+print(f"TP={tp.result().numpy()}")
+print(f"TN={tn.result().numpy()}")
