@@ -49,5 +49,6 @@ def main(
     with open(save_path, "wb") as f:
         pickle.dump(all_outputs, f)
 
+
 if __name__ == "__main__":
     main(DEVICE, SAVE_PATH, save_every=5000)
