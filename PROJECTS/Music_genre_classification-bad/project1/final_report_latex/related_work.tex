@@ -1,0 +1,19 @@
+\section{Related works}\label{related_work}
+
+Music genre classification (MGC) is at this point a well-known research problem and a subdomain of Music Information Retrieval (MIR). Culture and therefore music avoids strict barriers and definitions, nevertheless, each piece of music is usually categorized into one or more genres. MGC enables us to study this categorization, explore similarities and differences between various genres or even construct a taxonomy. 
+
+In the past, due to heavy computational limitations, the main focus of MGC was put on finding the best features for classification purposes. In \cite{oldFeatures} such features were e.g. \textit{AverageSyllablesPerWord} or \textit{SentenceLengthAverage}. Naturally, word embedding played an important role in extracting information from lyrics and the use of simple methods like \textit{bag-of-words} can be found in various papers \cite{mgc_example_1, liang2011music}. With time, an increasing amount of focus was put strictly on embeddings themselves, developing novel and improved representations. 
+
+Currently, all state-of-the-art approaches for MGC utilizing lyrics rely heavily on word embeddings. In a recent publication \cite{musicWordEmbed} an attempt was made to train the embedding model strictly on lyrics. Unfortunately, the significance of the work is hard to assess due to the lack of usage of this model.
+
+It is also rather common to approach MGC in a multi-modal manner. Usage of the audio itself has to be second if not the most popular source of information with many published articles \cite{audio_1dcnn, audio_attention, audio_reviews_cover, oldFeatures, oldAudio}. Other less trivial data sources are symbolic \cite{symbolic}, culture \cite{oldFeatures}, text reviews \cite{audio_reviews_cover}, and cover art \cite{audio_reviews_cover}. One could say that at this stage researchers experiment with enriching the pieces of music with any meaningful data possible.
+
+Reading through the papers approaching MGC in different ways, it is striking that in some cases crucial elements of the proposed solution, are presented without proper justification. In the case of \cite{sig_emb} a 100-dimensional GloVe model was used. It was stated that it is better than another technique called word2vec, but no proof or reference was provided. No other methods were used therefore it is impossible to say what was the value gained from using the GloVe and not e.g. bag-of-words.  In another work \cite{sig_bert} authors used word embeddings obtained from BERT and DistilBERT, with build-on classifiers, then compared their accuracy to BILSTM \cite{bilstm}, which as input received text embedded in an unspecified manner. Numerous simplifications, lack of details and often incomparable results should raise concerns among researchers. How can one declare improvement over some method or even guarantee the value of the proposed work, when provided context for the work is insufficient? Those concerns motivated us to create such context as a result of this project. We clearly declare how we preprocess data and which exactly embedding methods we use. Then we test which classification method works best on created lyrics representations. 
+
+The datasets that we work on are:
+\begin{itemize}
+    \item \textit{Song lyrics from 79 musical genres} dataset from Kaggle website \cite{KaggleDataset},
+    \item \textit{MetroLyrics} dataset processed and put in a GitHub repository \cite{GithubDataset}.
+\end{itemize}
+We describe in more detail, why we have chosen these datasets and how we preprocess data they contain in section \ref{datasets}.
+

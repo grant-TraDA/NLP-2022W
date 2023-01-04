@@ -27,3 +27,18 @@ All files can be found in a 'project1' subfolder:
 - code/results.ipynb - notebook with current results
 
 Overleaf project: https://www.overleaf.com/5118323575bffdjyftmtxx
+
+
+### Stage 3
+
+All files can be found in a 'project1' subfolder:
+
+- P1_final_report.pdf - final report
+- P1_final_presentation.pdf - presentation slides
+- final_report_latex - subfolder with latex sources of final report
+- code/bert_tuning.ipynb - notebook with fine-tuning of BERT + dense layers architecture
+- code/nlp_title_embedding.py - python file with a class for obtaining combined embedding of title and lyrics
+- code/svg_plots_for_training_analysis.ipynb - notebook for saving SVG plots of training accuracy and loss
+- code/title_classifier.ipynb - notebook for training and testing the additional approach
+
+Overleaf project: https://www.overleaf.com/2438547529jgkdsyfgtmvj

@@ -1,0 +1,112 @@
+\section{Experiments and results}\label{experiments}
+\subsection{First attempts}
+At first, we conducted some tests on \textit{MetroLyrics} dataset only, using GloVe embedding. We did not process the dataset or lyrics much back then, therefore we had 11 genres and almost raw lyrics.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{l|r|r|r}
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{Bal. acc.} & \textbf{F1-score} \\ \hline
+Naive Bayes & 15.43\% & 16.48\% & 9.66\% \\
+Linear SVM  & 46.18\% & 20.55\% & 42.78\% \\
+XGBoost     & 30.39\% & 13.20\% & 31.17\% \\
+CNN         & 50.91\% & 25.84\% & 48.72\%          
+\end{tabular}
+\caption{Results of the first attempts}
+\end{table}
+
+As we can see accuracy may not be the best, but seems still decent for $11$ genres. Unfortunately, balanced accuracy is much worse. It may be because it was a very highly unbalanced dataset where the most common \textit{Rock} label had $100,053$ observations and the rarest \textit{Folk} only $1,689$. To eliminate this possibility we performed many previously mentioned operations on datasets in the hope it will improve both accuracy and balanced accuracy.
+
+\subsection{Balanced lyrics dataset}
+Firstly, we performed tests on the balanced lyrics dataset using different classifiers and Smaller BERT embedding. We also used text in two forms: after weak preprocessing and strong preprocessing. We achieved the following results:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{l|r|r}
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{F1-score} \\ \hline
+Naive Bayes         & 43.24\%           & 39.18\%           \\
+Linear SVM          & 43.60\%           & 40.03\%           \\
+XGBoost             & 42.38\%           & 42.30\%           \\
+CNN                 & 51.31\%           & 51.05\%          
+\end{tabular}
+\caption{Results for weak preprocessing}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{l|r|r}
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{F1-score} \\ \hline
+Naive Bayes         & 40.33\%           & 33.69\%           \\
+Linear SVM          & 50.61\%           & 46.12\%           \\
+XGBoost             & 45.47\%           & 45.68\%           \\
+CNN                 & 53.54\%           & 53.02\%          
+\end{tabular}
+\caption{Results for strong preprocessing}
+\end{table}
+\begin{figure}[!h]
+\centering
+\includesvg[width=3.2in]{plots/classifiers_comparison.svg}
+\caption{Classifiers and preprocessing comparison}
+\end{figure} 
+
+As we can see CNN classifier yields the best results, therefore in the next experiments we limited ourselves to just this classifier. 
+
+We can also observe that stronger preprocessing gave better results than weaker preprocessing, achieving the best accuracy of $53.54\%$ for Smaller BERT embedding. Unfortunately, even though we planned to do this and even have the implementation prepared, we didn't manage to conduct tests in time for other experiments with such processed text. In further experiments, we only use weakly preprocessed text.
+
+Next, we tested CNN classifier for different embeddings and achieved the following results. In parenthesis next to the embedding methods' names, we can see the length of the given embedding of a single word.
+\begin{table}[!h]
+\centering
+\begin{tabular}{l|r|r}
+\textbf{Embedding} & \textbf{Accuracy} & \textbf{F1-score} \\ \hline
+GloVe (100)        & 53.73\%           & 53.25\%           \\
+Smaller BERT (128) & 51.31\%           & 51.05\%           \\
+Base BERT (768)    & 56.48\%           & 56.55\%           \\
+Word2vec (300)     & 52.61\%           & 52.65\%          
+\end{tabular}
+\caption{Results for different embeddings}
+\end{table}
+
+\begin{figure}[!h]
+\centering
+\includesvg[width=3.2in]{plots/embeddings_comparison.svg}
+\caption{Embeddings comparison}
+\end{figure}
+
+Unsurprisingly, the best results were achieved for the most advanced embedding method, which was Base BERT, with $56.58\%$ accuracy.
+
+What is interesting though, second-best result ($53.73\%$) was achieved by GloVe, whose embedding length is the smallest of all methods.
+
+The plots in figures \ref{loss} and \ref{accuracy} present how loss and accuracy were changing while training was conducted for the best method, which is Base BERT with CNN:
+
+\begin{figure}[!h]
+\centering
+\includesvg[width=3.2in]{plots/small_balanced/model_bert_cnn_loss.svg}
+\caption{Loss function for Base BERT + CNN}
+\label{loss}
+\end{figure} 
+
+\begin{figure}[!h]
+\centering
+\includesvg[width=3.2in]{plots/small_balanced/model_bert_cnn_accuracy.svg}
+\caption{Accuracy to training time for Base BERT + CNN}
+\label{accuracy}
+\end{figure}
+
+Plots suggest overfitting -- even though accuracy on the training dataset was very good, above $90\%$, on the testing dataset it was only $50\%$. In fact, we tried to help this occurrence by modifying CNN classifier by e.g. changing the dropout layer but unfortunately, it didn't seem to change the results a lot.
+
+\subsection{Lyrics with title}
+The last experiment was conducted for the additional approach and Base BERT + CNN architecture. As mentioned earlier the data came only from the \textit{Song lyrics from 79 musi-
+cal genres} dataset. The results are visible below.
+
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{l|r|r}
+  & \textbf{Lyrics only} & \textbf{Lyrics + Title} \\\hline
+Accuracy  & 54.27\% & 57.17\%   \\
+Bal. acc. & 55.36\% & 52.65\%  \\
+F1-score  & 54.80\% & 56.10\%      
+\end{tabular}
+\caption{Comparison of results of lyrics with and without title}
+\end{table}
+
+It can be seen that the addition of titles helped to achieve a little bit higher accuracy, but the balanced accuracy was actually lower. It is hard to tell if adding the title is valuable as the training is longer and the results are not significantly better.
