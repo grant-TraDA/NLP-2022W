@@ -1,0 +1,19 @@
+\section{2-step CNN classifier}
+
+Since our main dataset is highly unbalanced and the genre 'Rock' has double the amount of all other samples we decided to create a new model, which will include two CNN submodels: one differentiating between the 'Rock' genre and other genres there, and the second classifying all other genres.
+
+The first model is a CNN prepared strictly for binary classification with two sets of layers consisting of the convolutional layer, the max-pooling, and the dropout layer. As for the last classifying dense layer, we use the sigmoid activation function. While learning we have used binary cross-entropy loss function and adam optimizer.
+
+The second model consists of the same sets of layers but repeated three times, not two. The last classifying dense layer uses the softmax activation function. While learning we have used sparse categorical cross-entropy loss function and adam optimizer.
+
+We compared the results of the above new 2-step CNN classifier with the standard CNN classifier. For both methods GloVe embeddings were utilized, We received the following results:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{l|r|r|r}
+\textbf{Classifier} & \textbf{Accuracy} & \textbf{Bal. acc.}  & \textbf{F1-score} \\ \hline
+CNN         & 54.12\%           & 49.22\%           & 54.02\%          \\
+2-step CNN  & 53.30\%           & 50.90\%           & 53.91\%           
+\end{tabular}
+\caption{Comparison of models}
+\end{table}

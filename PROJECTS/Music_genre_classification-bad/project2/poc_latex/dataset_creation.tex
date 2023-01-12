@@ -1,0 +1,36 @@
+\section{Dataset creation}
+We have tried to create our own dataset using Spotify API \cite{Spotify} and Genius API \cite{Genius}. To do that we have utilized spotipy \cite{Spotipy} and lyricsgenius \cite{LyricsGenius} libraries. 
+
+The process of data gathering is as follows. Firstly, we get recommendations from Spotify providing also the desired genre. Then, having the artist of the song and the title we obtain the lyrics from Genius. If the lyrics cannot be found, we omit the song. Lastly, we only leave the genres and the lyrics in the dataset.
+
+This way we tried to create a dataset containing 5 genres each with 5,000 observations. Unfortunately, not all lyrics have been found. What is more, after duplicates dropping, it turned out that less than 2,000 observations were left. That means that the recommendations from Spotify repeat a lot. At the moment, we do not know if we can influence the recommendations in some way to avoid such situations.
+
+As the mentioned attempt was not very successful, we decided to create just a small dataset containing 4 genres (\textit{alternative}, \textit{hip-hop}, \textit{pop}, \textit{rock}) with 200 observations each. The final dataset contains 628 observations and was preprocessed in the same way that the other two datasets that we tested on earlier.
+
+Unfortunately, the quality of found lyrics is also not the greatest as there exist some observations for which lyrics have lists of some artists and their songs' titles. The exemplary beginning of such lyrics is as follows: 
+
+\textit{Ring My Bell - Anita Ward\\
+Brianstorm - Arctic Monkeys\\
+It's No Crime - Babyface\\
+Shooting Stars - Bag Raiders\\
+Hellfire - Barns Courtney\\
+I.F.L.Y. - Bazzi\\
+Come Together - The Beatles\\
+While My Guitar Gently Weeps - The Beatles\\
+bellyache - Billie Eilish\\
+my boy - Billie Eilish\\
+ocean eyes - Billie Eilish\\
+bad guy - Billie Eilish\\
+bury a friend - Billie Eilish\\
+everything i wanted - Billie Eilish\\
+my strange addiction - Billie Eilish\\
+when the party's over - Billie Eilish\\
+xanny - Billie Eilish\\
+you should see me in a crown - Billie Eilish\\
+Uptown Girl - Billy Joel\\
+Drowning - A Boogie Wit Da Hoodie\\
+Sunshine Of Your Love - Cream\\
+Get You - Daniel Caesar\\
+Blue Day - Darker My Love...}
+
+Nonetheless, we will probably test some of the methods on this small dataset.
