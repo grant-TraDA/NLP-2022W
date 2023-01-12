@@ -1,0 +1,18 @@
+\section{Sentiment}
+
+The main idea for improving our results outside improving and fine-tuning previously tested models is to combine lyric embeddings with the sentiment of the song's lyrics. This can be viewed as adding feature extraction to the current solution. We believe that providing this information straight to the classification function alongside embeddings will noticeably improve the results. 
+
+To test this hypothesis, we combined the pretrained \href{https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english}{\texttt{DistilBERT}} model with  pretrained \href{https://huggingface.co/gokuls/BERT-tiny-emotion-intent}{\texttt{BERT-tiny-emotion-intent}}. We were forced to use a small sentiment model due to hardware limitations, if those were not present, obviously, a more advanced model could provide additional improvements. This network was later fine-tuned with the sentiment model frozen. The training was done on \texttt{small\_balanced} dataset, and two networks were compared. First sole \texttt{DistilBERT} and the second, the combined model, also \texttt{DistilBERT} with the same parameters, but additionally with the sentiment of the lyrics passed to the classification function. 
+
+We managed to slightly improve the score in the case of the second model, as can be seen in table \ref{tab:sentiment_scores}. The change is not huge but, in our opinion significant enough to explore this solution further. 
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{l|r|r|r}
+        \textbf{Model} & \textbf{Accuracy} & \textbf{Bal. acc.}  & \textbf{F1-score} \\ \hline
+        DistilBERT         & 62.85\%           & 62.85\%           & 65.18\%          \\
+        combined  & \textbf{65.07\%}           & \textbf{65.07\%}           & \textbf{67.41\% }          
+    \end{tabular}
+    \caption{Comparison of models}
+    \label{tab:sentiment_scores}
+\end{table}
