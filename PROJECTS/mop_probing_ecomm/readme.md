@@ -1,9 +1,3 @@
----
-title: "Read me document"
-bibliography: bibliography.bib
-link-citations: true
----
-
 MOP E-COMMERCE Probing tasks
 ============
 Authors: Paweł Golik | Mateusz Jastrzębiowski | Aleksandra Muszkowska (MOP Team)
