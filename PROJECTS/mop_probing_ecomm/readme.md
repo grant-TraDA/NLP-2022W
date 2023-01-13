@@ -102,7 +102,7 @@ All functions/classes used throughout the notebooks can be found in the `source`
 
 ### Models
 To ensure reproducibility of experiments and results, we added fine-tuned models in the directories `project1_models` (for Project #1) and `project2_models` (for Project #2).
-Each model is placed in its own subdirectory (e.g., `project1_models/bert-base-cased`) accompanied by the `info.txt` file, in which we provided additional information about fine-tuning (`hyperparameters`, used functions etc., exact dataset).
+Each model is placed in its own subdirectory (e.g., `project1_models/bert-base-cased`) accompanied by the `info.txt` file, in which we provided additional information about fine-tuning (`hyperparameters`, used functions etc., exact dataset). The model binaries and additional configuration files (produced by the SentenceTransformers library - refer to doc) were packed into a zip archive. They are available via the url provided in  the `model_url.txt` file (due to the GitHub's limit for uploading large files).
 
 
 ### Scripts
