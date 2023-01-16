@@ -1,0 +1,198 @@
+\section{Appendix}
+
+\subsection{Team contribution}
+Self-assessed authors' contribution is in table \ref{tab:contribution}.
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{0.5\textwidth}{XXr}
+\textbf{Author} & \textbf{Contributions} & \textbf{Workload} \\\hline
+Bartłomiej \mbox{Eljasiak} & Exploratory data analysis, part of the report & 20\% \\\hline
+Aleksandra Nawrocka & Basic data preprocessing, refactorization of training code, adjustment of models and training code and conducting tests for title addition, part of the report, improvements after initial assessment & 35\% \\\hline
+Dominika \mbox{Umiastowska} & Advanced data preprocessing, preparation of models and training code and conducting tests & 45\% \\
+\end{tabularx}
+\caption{Authors' contribution}
+\label{tab:contribution}
+\end{table}
+
+\subsection{Some comments regarding presentation reviews}
+
+Here are some comments regarding suggestions and questions contained in the presentation's reviews:
+\begin{enumerate}
+    \item Barplots were added to the report where it made sense.
+    \item Our main contribution is stated in the abstract.
+    \item We have used Smaller BERT and Base BERT because training took a lot of time
+    \item Title addition is described in section \ref{title}, there are no additional fields separating lyrics and title.
+    \item We have tested our models on the balanced dataset, which we have created by dropping redundant observations.
+    \item We think that adding audio would entirely change the project scope and make it significantly easier. That is not the point of our project.
+\end{enumerate}
+
+\subsection{Additional comments regarding the assessment of our project}
+
+\begin{enumerate}
+    \item We provide some of the models in the \verb|models| subdirectory. Unfortunately, the majority of them are too big to be put into the repository. Moreover, it is possible that because of problems regarding repository and branches a small number of them were permanently deleted by accident.
+    \item Majority of our code is in notebooks. We believe that that makes the solution quite easily reproducible. The suggested order of code running would be:
+    \begin{itemize}
+        \item downloading datasets (links are provided in \verb|data_preprocessing| notebook) and putting them in \verb|data/raw| directory,
+        \item running \verb|data_preprocessing| notebook,
+        \item running \verb|basic_classifier| notebook to obtain majority of results,
+        \item running \verb|title_classifier| notebook to obtain results for title addition.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Hyperparameters of models}
+In the tables \ref{tab:h_emb}, \ref{tab:h_cls}, \ref{tab:h_other} we provide the hyperparameters of models.
+
+\newpage
+\onecolumn
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|r}
+\textbf{Embedding} & \textbf{Library} & \textbf{Model name} & \textbf{Dimension} \\\hline
+GloVe & John Snow Labs Spark NLP & glove\_100d & 100 \\
+Smaller BERT & John Snow Labs Spark NLP & small\_bert\_L2\_128 & 128 \\
+Base BERT & John Snow Labs Spark NLP & small\_bert\_L2\_768 & 768 \\
+Word2vec & John Snow Labs Spark NLP & word2vec\_gigaword\_300 & 300 \\
+\end{tabular}
+\caption{Hyperparameters of embeddings}
+\label{tab:h_emb}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|l|r}
+\textbf{Classifier} & \textbf{Library} & \textbf{Class} & \textbf{Optimizer} & \textbf{Epochs} \\\hline
+Naive Bayes & sklearn & GaussianNB & - & - \\
+Linear SVM & sklearn & SGDClassifier & - & - \\
+XGBoost & xgboost & xgboost & - & - \\
+CNN & tensorflow.keras & Sequential & Adam & 5 \\
+\end{tabular}
+\caption{Hyperparameters of classifiers}
+\label{tab:h_cls}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r|r}
+\textbf{Max. number of words in lyrics} & \textbf{Max. number of words in titles} \\\hline
+400 & 15 \\
+\end{tabular}
+\caption{Other hyperparameters}
+\label{tab:h_other}
+\end{table}
+
+Below there is a summary of the CNN classifier model for GloVe embeddings.
+\begin{verbatim}
+_________________________________________________________________
+ Layer (type)                     Output Shape          Param #   
+=================================================================
+ conv1d_15 (Conv1D)               (None, 40000, 8)      32        
+ max_pooling1d_10 (MaxPooling1D)  (None, 20000, 8)      0                     
+ dropout_10 (Dropout)             (None, 20000, 8)      0         
+ conv1d_16 (Conv1D)               (None, 20000, 16)     400       
+ max_pooling1d_11 (MaxPooling1D)  (None, 10000, 16)     0                                  
+ dropout_11 (Dropout)             (None, 10000, 16)     0         
+ conv1d_17 (Conv1D)               (None, 10000, 32)     1568      
+ flatten_5 (Flatten)              (None, 320000)        0         
+ dense_10 (Dense)                 (None, 128)           40960128  
+ dense_11 (Dense)                 (None, 5)             645       
+=================================================================
+Total params: 40,962,773
+Trainable params: 40,962,773
+Non-trainable params: 0
+_________________________________________________________________
+
+\end{verbatim}
+
+Below there is a summary of the CNN classifier model for Smaller BERT embeddings.
+\begin{verbatim}
+_________________________________________________________________
+ Layer (type)                     Output Shape         Param #   
+=================================================================
+ conv1d_18 (Conv1D)               (None, 51200, 8)     32        
+ max_pooling1d_12 (MaxPooling1D)  (None, 25600, 8)     0                                    
+ dropout_12 (Dropout)             (None, 25600, 8)     0         
+ conv1d_19 (Conv1D)               (None, 25600, 16)    400       
+ max_pooling1d_13 (MaxPooling1D)  (None, 12800, 16)    0                                    
+ dropout_13 (Dropout)             (None, 12800, 16)    0         
+ conv1d_20 (Conv1D)               (None, 12800, 32)    1568      
+ flatten_6 (Flatten)              (None, 409600)       0         
+ dense_12 (Dense)                 (None, 128)          52428928  
+ dense_13 (Dense)                 (None, 5)            645       
+=================================================================
+Total params: 52,431,573
+Trainable params: 52,431,573
+Non-trainable params: 0
+_________________________________________________________________
+
+\end{verbatim}
+
+Below there is a summary of the CNN classifier model for Base BERT embeddings.
+\begin{verbatim}
+_________________________________________________________________
+ Layer (type)                     Output Shape          Param #   
+=================================================================
+ conv1d_21 (Conv1D)               (None, 307200, 8)     32        
+ max_pooling1d_14 (MaxPooling1D)  (None, 153600, 8)     0        
+ dropout_14 (Dropout)             (None, 153600, 8)     0         
+ conv1d_22 (Conv1D)               (None, 153600, 16)    400       
+ max_pooling1d_15 (MaxPooling1D)  (None, 76800, 16)     0         
+ dropout_15 (Dropout)             (None, 76800, 16)     0         
+ conv1d_23 (Conv1D)               (None, 76800, 32)     1568      
+ flatten_7 (Flatten)              (None, 2457600)       0         
+ dense_14 (Dense)                 (None, 128)           314572928 
+ dense_15 (Dense)                 (None, 5)             645       
+=================================================================
+Total params: 314,575,573
+Trainable params: 314,575,573
+Non-trainable params: 0
+_________________________________________________________________
+
+\end{verbatim}
+
+Below there is a summary of the CNN classifier model for Word2vec embeddings.
+\begin{verbatim}
+_________________________________________________________________
+ Layer (type)                     Output Shape          Param #   
+=================================================================
+ conv1d_24 (Conv1D)               (None, 120000, 8)     32        
+ max_pooling1d_16 (MaxPooling1D)  (None, 60000, 8)      0              
+ dropout_16 (Dropout)             (None, 60000, 8)      0         
+ conv1d_25 (Conv1D)               (None, 60000, 16)     400       
+ max_pooling1d_17 (MaxPooling1D)  (None, 30000, 16)     0               
+ dropout_17 (Dropout)             (None, 30000, 16)     0         
+ conv1d_26 (Conv1D)               (None, 30000, 32)     1568      
+ flatten_8 (Flatten)              (None, 960000)        0         
+ dense_16 (Dense)                 (None, 128)           122880128 
+ dense_17 (Dense)                 (None, 5)             645       
+=================================================================
+Total params: 122,882,773
+Trainable params: 122,882,773
+Non-trainable params: 0
+_________________________________________________________________
+
+\end{verbatim}
+
+Below there is a summary of the CNN title classifier model for Base BERT embeddings.
+\begin{verbatim}
+_________________________________________________________________
+ Layer (type)                    Output Shape          Param #   
+=================================================================
+ conv1d (Conv1D)                 (None, 318720, 8)     32                  
+ max_pooling1d (MaxPooling1D)    (None, 159360, 8)     0         
+ dropout (Dropout)               (None, 159360, 8)     0                 
+ conv1d_1 (Conv1D)               (None, 159360, 16)    400           
+ max_pooling1d_1 (MaxPooling1D)  (None, 79680, 16)     0                                     
+ dropout_1 (Dropout)             (None, 79680, 16)     0               
+ conv1d_2 (Conv1D)               (None, 79680, 32)     1568      
+ flatten (Flatten)               (None, 2549760)       0                    
+ dense (Dense)                   (None, 128)           326369408          
+ dense_1 (Dense)                 (None, 5)             645                                 
+=================================================================
+Total params: 326,372,053
+Trainable params: 326,372,053
+Non-trainable params: 0
+_________________________________________________________________
+
+\end{verbatim}

@@ -1,0 +1,16 @@
+\section{Conclusion}\label{conclusion}
+
+This work explored various approaches to music genre classification based solely on lyrics and was oriented on comparing numerous techniques. This was done in order to create a context for future researchers, which is currently missing in this area of study. In performed experiments, we used two different datasets with two types of inputs for models, four embedding techniques and four vastly different machine learning classifiers.
+
+The final results are the following, 56.48\% accuracy on lyrics with BERT embeddings and CNN classifier on our balanced dataset, and 57.17\% accuracy on lyrics with titles for BERT embeddings and CNN classifier on our unbalanced dataset. Both of the datasets were described in detail in \ref{Datasets preparation}. Those results may seem low, but the reader ought to remember that in the case of this task flawless classification may not be possible and currently the best result of 77.63\% accuracy, whereas higher, comes with a set of problems described in \ref{discussion}.
+
+\section{Future work}\label{future_work}
+The results of classification could, possibly to a large extent, still be improved and the final methods presented in this document ought to be treated as a decent starting point for future researchers. 
+
+Based on all the knowledge gained while working on this project we humbly want to present several ideas, which in our opinion will lead to further improvement in this topic. First of all, we see great potential in more extensive feature extraction, especially in form of adding sentiment vector alongside lyric embedding vector. This sentiment can be extracted directly from the lyrics themselves, hence does not break the assumption of incorporating only the text of the songs. 
+
+There can be observed a positive correlation between a model's complexity and performance on a test dataset, which leads to the conclusion that the potential of embedding is still not exhausted and a classification layer with a greater number of parameters could lead to better overall performance. We suspect that densely connected layers of neurons could outperform models presented in this work, but this hypothesis has to be put to the test.
+
+Another matter, which could be addressed, is separating a single classification model into two models: the first one for classes with a disproportional number of observations and the second for a subset of data, which can be treated as a balanced classification task. Music genres present in the dataset from this work were mostly shadowed by one music genre, i.e. \textit{Rock}. We see the potential of firstly classifying genre as rock vs non-rock and if a prediction is made for a non-rock class then using the second model for detailed classification.
+
+Lastly and possibly the most obvious, yet still valuable addition would be to collect more data, especially from the last years and from classes which are underrepresented in current datasets. Most aspects mentioned above are to be addressed in our following work. 

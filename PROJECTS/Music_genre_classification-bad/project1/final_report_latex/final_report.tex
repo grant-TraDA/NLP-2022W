@@ -1,0 +1,74 @@
+%
+% File main.tex
+%
+% Contact: car@ir.hit.edu.cn, gdzhou@suda.edu.cn
+%%e.agirre@ehu.es or Sergi.Balari@uab.es
+%% and that of ACL 08 by Joakim Nivre and Noah Smith
+
+\documentclass[11pt]{article}
+\usepackage{comment}
+\usepackage{acl2015}
+\setlength\titlebox{6cm}
+\usepackage{times}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{latexsym}
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{csquotes}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{svg}
+
+\title{Music genre classification based on song lyrics - comparison between different word embedding techniques and classifiers \\Project Proposal for NLP Course, Winter 2022}
+
+\author{Bartłomiej Eljasiak \\
+  Warsaw University of Technology \\
+  {\tt\small bartlomiej.eljasiak.stud@pw.edu.pl} \\\And
+  Aleksandra Nawrocka \\
+  Warsaw University of Technology \\
+  {\tt\small aleksandra.nawrocka.stud@pw.edu.pl} \\
+  \AND
+  Dominika Umiastowska \\
+  Warsaw University of Technology \\
+  {\tt\small dominika.umiastowska.stud@pw.edu.pl} \\\And 
+  supervisor: Anna Wróblewska\\
+  Warsaw University of Technology \\
+  {\tt\small anna.wroblewska1@pw.edu.pl}\\}
+
+\date{}
+
+\begin{document}
+\raggedbottom
+
+\maketitle
+
+\vspace{5em}
+
+\begin{abstract}
+
+Music genre classification (MGC), although a well-known task, still remains challenging in the domain of Music Information Retrieval. We tackle the problem of MGC based solely on lyrics and try to solve it using a solution composed of a state-of-the-art word embedding method and a separate classification model. Our main contribution is the comparison between different word embedding methods and classification techniques, which in the domain of MGC is currently lacking. The novelty comes with an additional approach in the form of testing the impact of enriching the lyrics with the title of the song.
+
+\end{abstract}
+
+
+
+\input{introduction.tex}
+
+\input{related_work.tex}
+
+\input{approach}
+
+\input{experiments.tex}
+
+\input{discussion.tex}
+
+\input{conclusion.tex}
+
+\printbibliography
+
+\input{appendix.tex}
+
+\end{document}
+
+

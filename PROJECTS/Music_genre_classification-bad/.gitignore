@@ -1,4 +1,12 @@
 project1/code/data/*
-project1/code/*/models/*
-project1/code/*/predictions/*
+project1/code/predictions/*
+project1/code/training/*
+project1/code/figs/*
 project1/code/__pycache__/*
+
+project2/code/data/*
+project2/code/models/*
+project2/code/predictions/*
+project2/code/training/*
+project2/code/figs/*
+project2/code/__pycache__/*
