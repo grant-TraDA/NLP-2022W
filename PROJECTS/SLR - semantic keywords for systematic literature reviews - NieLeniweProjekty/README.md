@@ -1,4 +1,3 @@
 code - folder with code
-NLP - project proposal.pptx - powerpoint presentation
-NLP - project proposal.pdf - pdf of the report
-project-proposal.tex - latex source code to the report
+project proposal - folder with presentation and report from the project proposal
+final presentaion - folder with presentation from the final project
