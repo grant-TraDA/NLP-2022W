@@ -9,37 +9,73 @@ from tensorflow.keras import layers, models
 tf.get_logger().setLevel('ERROR')
 
 class NLPClassifier(ABC):
+    '''Abstract class of a classifier.'''
+    
     def __init__(self):
         self.model = None
         self.name = None
 
     def partial_fit(self, X, Y, classes):
+        '''
+        Fit part of the data.
+        Parameters:
+            X (Series): Embeddings of lyrics of training data.
+            Y (Series): Encoded genres of training data.
+            classes (ndarray): Possible encoded genres.
+        '''
         self.model.partial_fit(X, Y, classes)
 
     def predict(self, X):
+        '''
+        Predict encoded genres.
+        Parameters:
+            X (Series): Embeddings of lyrics of test data.
+        Returns:
+            ndarray: Predicted encoded genres.
+        '''
         return self.model.predict(X)
 
     def predict_proba(self, X):
+        '''
+        Predict probabilities of encoded genres.
+        Parameters:
+            X (Series): Embeddings of lyrics of test data.
+        Returns:
+            ndarray: Predicted probabilities of encoded genres.
+        '''
         return self.model.predict_proba(X)
 
     def save(self, filename):
+        '''
+        Save model to file.
+        Parameters:
+            filename (str): Path to file name.
+        '''
         dump(self.model, f'{filename}.joblib')
 
     def load(self, filename):
+        '''
+        Load model from file.
+        Parameters:
+            filename (str): Path to file name.
+        '''
         self.model = load(filename)
 
 
 class NaiveBayes(NLPClassifier):
+    '''Naive Bayes classifier.'''
     def __init__(self):
         self.model = GaussianNB()
         self.name = 'naive-bayes'
 
 class SVM(NLPClassifier):
+    '''Linear SVM classifier.'''
     def __init__(self):
         self.model = SGDClassifier()
         self.name = 'svm'
 
 class XGBoost(NLPClassifier):
+    '''XGBoost classifier.'''
     def __init__(self, class_count, boost_iter=30):
         self.model = None
         self.name = 'xgboost'
@@ -61,6 +97,7 @@ class XGBoost(NLPClassifier):
         self.model.load_model(filename)
 
 class CNN(NLPClassifier):
+    '''CNN classifier.'''
     def __init__(self, vec_len, class_count, optimizer):
         self.name = 'cnn'
 
