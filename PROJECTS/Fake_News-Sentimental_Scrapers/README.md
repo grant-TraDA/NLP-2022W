@@ -23,3 +23,4 @@ tion (MID) using multiple datasets.
 * **./presentation.pdf** : presentation used for our first milestone (overleaf link provided below)
 
 **Overleaf project link :** https://www.overleaf.com/5826868425nddbrdzvfpsf
+(This includes second project proposal called "project2-proposal.tex")
