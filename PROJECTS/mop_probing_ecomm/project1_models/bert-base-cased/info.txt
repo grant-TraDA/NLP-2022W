@@ -1,0 +1,18 @@
+
+
+This is the fine-tuned 'bert-base-cased' from the HuggingFace library (https://huggingface.co/bert-base-cased).
+
+The model was fine-tuned on the WDC dataset (category: 'Cameras', size: 'medium'): https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/trainsets/cameras_train.zip
+
+Fine-tunning code: SentenceTransformer library (see the notebook: 'project1_notebooks/finetuning_embedding_extraction.ipynb')
+
+Hyperparameters:
+
+dataset_type = 'cameras'
+dataset_size = 'medium'
+train_batch_size = 16
+num_epochs = 200
+warm_steps = len(training_dataset) * num_epochs  * 0.1
+train_loss = cosine similarity
+
+For more details please refer to the SentenceTransformer library documentation: https://www.sbert.net/examples/training/sts/README.html 
