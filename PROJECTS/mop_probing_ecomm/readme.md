@@ -34,16 +34,21 @@ The SentenceTrasfomers library documentation provides a great explanation of cro
 --- 
 
 ## Libraries
-- [Hugging Face](https://huggingface.co/) [Wolf et al.2019]: A great library with many pretrained language models, such as: `bert-base-cased` or `xml-roberta-base`.
+- [Hugging Face](https://huggingface.co/) [Wolf et al.2019]: A great library with many pretrained language models, such as: `bert-base-cased` or `xlm-roberta-base`.
 - [SentenceTransformers](https://www.sbert.net/) [Reimers et al.2019]: A library designed for easy computing of sentence embeddings using Hugging Face transformers under the hood.
 It also provides ready-to-use functions for their fine-tunning.
+- [SentEval](https://github.com/facebookresearch/SentEval) [Conneau et al.2018]: SentEval is a library for evaluating the quality of sentence embeddings. They include a suite of 10 probing tasks which evaluate what linguistic properties are encoded in sentence embeddings.
 
 ---
 
-## Dataset
-**Web Data Commons - Training Dataset and Gold Standard for Large-Scale Product Matching** - the dataset consists of pairs of offers grouped into four categories: `Computers`, `Cameras`, `Watches`, `Shoes`. Each pair of offers is either a `positive` pair (both offers regard the same product) or a `negative` pair (two different products). Please, note that offers within negative pairs regard different products but still, of the same product category (e.g. two different cameras) only.
+## Datasets
+- **Web Data Commons - Training Dataset and Gold Standard for Large-Scale Product Matching** - the dataset consists of pairs of offers grouped into four categories: `Computers`, `Cameras`, `Watches`, `Shoes`. Each pair of offers is either a `positive` pair (both offers regard the same product) or a `negative` pair (two different products). Please, note that offers within negative pairs regard different products but still, of the same product category (e.g. two different cameras) only.
 
 To learn more about the dataset visit the website: [WDC dataset](http://webdatacommons.org/largescaleproductcorpus/).
+
+- **Natural dataset** (Quora Question Pairs) - the dataset consists of pairs of questions and a corresponding true label (whether the two questions have the same meaning). All of the questions are the genuine examples from Quora. In the Project #2, the dataset poses a natural point of reference for results of probing tasks since it does not contain complex words (such as model series etc.). We used only a subset of the dataset (`pd.sample` function with `random_state=42`), a function `get_natural_dataset` to obtain exactly the same dataset is located in `./source/load_data/natural_ds/load_natural_ds`.
+
+You can find the dataset at [Kaggle](https://www.kaggle.com/competitions/quora-question-pairs/data?select=train.csv.zip)
 
 ---
 
@@ -62,12 +67,17 @@ To learn more about the dataset visit the website: [WDC dataset](http://webdatac
     - **The Levenshtein distance**: the goal was to build a classifier, that based on the pair of embeddings, tried to predict the Levenshtein distance score calculated from the two strings (each representing one offer from the pair). We discretized the target variable into 5 classes ('similar', 'slightly similar', 'neutral', 'hardly similar', 'not similar').
 
  Project #2 covers:
- - fine-tuning of the `xml-roberta-base` model on the `Computers medium` WDC dataset (e-commerce product matching problem)
+ - fine-tuning of the `xlm-roberta-base` model on the `Computers medium` WDC dataset (e-commerce product matching problem)
  - calculating embeddings for each offer using the fine-tuned model
  - calculating embeddings using the model before fine-tuning to analyze the influence of fine-tunning on the space
- - performing probing tasks from the Project #1 on embeddings obtained both before and after fine-tunning
+ - performing probing tasks from the Project #1 on embeddings obtained both before and after fine-tunning:
+   - **Probing1**: TO DO
+   - **Probing2**: TO DO
  - designing new probing tasks and performing them on embeddings obtained both before and after fine-tunning
- - applying the probing tasks based on string similarity to a "natural" dataset (without specialized words such as: names of brands, models)
+ - applying the probing tasks for embeddings obtained both before and after fine-tunning obtained on a "natural" dataset (without specialized words such as: model series number etc.) - the Quora Question Pairs dataset, serving as a "natural" point of reference. 
+ - since not all probing tasks designed for the WDC dataset were easy to apply to the "natural dataset" (e.g., brand names), we provided some similar replacements:
+   - **Probing1**: TO DO
+   - **Probing2**: TO DO
 
 ---
 
@@ -88,12 +98,15 @@ You may want to take a look at our notebooks. You can find there our work.
 The notebooks reside in the directories `project1_notebooks` (for Project #1) and `project2_notebooks` (for Project #2).
 
 Project #1 notebooks:
-- `finetuning_embedding_extraction.ipynb`: this notebook is meant to be run on Google Colab environment. It was used for fine-tuning of the selected model, embedding extraction and saving results.
+- `finetuning_embedding_extraction.ipynb`: this notebook is meant to be run on Google Colab environment. It was used for fine-tuning of the `bert-base-cased`  model, embedding extraction and saving results.
 - `probing_tasks.ipynb`: in this notebook you can find our probing tasks
 - `export_tsv.ipynb`: notebook used for converting the embeddings into a .tsv file for visualization of the embedded space at https://projector.tensorflow.org/.
 
 Project #2 notebooks:
-TODO (Project #2 still in progress)
+- `computers_embeddings.ipynb`: this notebook is meant to be run on Google Colab environment. It was used for fine-tuning of the `xlm-roberta-base` model, embedding extraction and saving results.
+- `natural_dataset_embeddings.ipynb`: this notebook is meant to be run on Google Colab environment. We used it with the 'natural' dataset - fine-tunning of the `xlm-roberta-base` model, embedding extraction and saving results.
+- `SentEval_probings.ipynb`: this notebook is meant to be run on Google Colab environment. It demonstrates using of the `SentEval` library to perform probing tasks.
+- TO DO
 
 
 ### Source code
@@ -101,8 +114,8 @@ All functions/classes used throughout the notebooks can be found in the `source`
 
 
 ### Models
-To ensure reproducibility of experiments and results, we added fine-tuned models in the directories `project1_models` (for Project #1) and `project2_models` (for Project #2).
-Each model is placed in its own subdirectory (e.g., `project1_models/bert-base-cased`) accompanied by the `info.txt` file, in which we provided additional information about fine-tuning (`hyperparameters`, used functions etc., exact dataset). The model binaries and additional configuration files (produced by the SentenceTransformers library - refer to doc) were packed into a zip archive. They are available via the url provided in  the `model_url.txt` file (due to the GitHub's limit for uploading large files).
+To ensure reproducibility of experiments and results, we added fine-tuned models in the directories `models` (for Project #1 and Project #2).
+Each model is placed in its own subdirectory (e.g., `models/bert-base-cased`) accompanied by the `info.txt` file, in which we provided additional information about fine-tuning (`hyperparameters`, used functions etc., exact dataset). The model binaries and additional configuration files (produced by the SentenceTransformers library - refer to doc) were packed into a zip archive. They are available via the url provided in  the `model_url.txt` file (due to the GitHub's limit for uploading large files).
 
 
 ### Scripts
@@ -187,5 +200,8 @@ Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks.
 Humeau, Samuel & Raison, Martin & Bordes,
 Antoine. 2018. Training millions of personalized
 dialogue agents.
+
+[Conneau et al.2018] A. Conneau & D. Kiela.
+2018. SentEval: An Evaluation Toolkit for Universal Sentence Representations
 
 

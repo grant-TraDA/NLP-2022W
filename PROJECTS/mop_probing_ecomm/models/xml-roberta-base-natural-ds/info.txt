@@ -1,0 +1,16 @@
+
+
+This is the fine-tuned 'xlm-roberta-base from the HuggingFace library (https://huggingface.co/xlm-roberta-base).
+
+The model was fine-tuned on the Quora Question Pairs dataset: https://www.kaggle.com/competitions/quora-question-pairs/data?select=train.csv.zip
+
+Fine-tunning code: SentenceTransformer library (see the notebook: 'project2_notebooks/natural_dataset_embeddings.ipynb')
+
+Hyperparameters:
+
+train_batch_size = 16
+num_epochs = 10
+warm_steps = len(training_dataset) * num_epochs  * 0.1
+train_loss = cosine similarity
+
+For more details please refer to the SentenceTransformer library documentation: https://www.sbert.net/examples/training/sts/README.html 
