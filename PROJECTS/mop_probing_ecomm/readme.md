@@ -145,6 +145,10 @@ The directories `POC` (for Project #1) and `POC2` (for Project #2) contain the s
 
 The directory `datasets` contains data used in the project.
 
+### Report and Presentation
+
+In directory `project1_output/Final_report_and_presentation` the final Report pdf file, final tex file and presentation is provided.
+
 ---
 
 
