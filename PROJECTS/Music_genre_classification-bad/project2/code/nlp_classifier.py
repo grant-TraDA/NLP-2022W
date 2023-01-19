@@ -63,7 +63,7 @@ class XGBoost(NLPClassifier):
 
 
 class CNNClassifier:
-    def partial_fit(self, X, Y):
+    def partial_fit(self, X, Y, classes):
         X_proc = X.reshape(*X.shape, 1)
         Y_proc = Y.reshape(-1, 1)
         self.model.fit(X_proc, Y_proc)
@@ -139,13 +139,13 @@ class CNN2Step(CNNClassifier):
         self.model2 = CNN(vec_len, class_count - 1, optimizer)
         self.indiv_class = indiv_class
 
-    def partial_fit(self, X, Y):
+    def partial_fit(self, X, Y, classes):
         Y_binary = np.array(Y == self.indiv_class).astype(int)
-        self.model1.partial_fit(X.reshape(*X.shape, 1), Y_binary.reshape(-1, 1))
+        self.model1.partial_fit(X.reshape(*X.shape, 1), Y_binary.reshape(-1, 1), classes)
         
         X_other = X[Y != self.indiv_class]
         Y_other = Y[Y != self.indiv_class]
-        self.model2.partial_fit(X_other.reshape(*X_other.shape, 1), Y_other.reshape(-1, 1))
+        self.model2.partial_fit(X_other.reshape(*X_other.shape, 1), Y_other.reshape(-1, 1), classes)
 
     def predict(self, X):
         pred1 = self.model1.predict(X.reshape(*X.shape, 1))

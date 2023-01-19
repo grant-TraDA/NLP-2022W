@@ -24,15 +24,16 @@ class NLPEmbeddingTorch(ABC):
 
 
 class DistilBERT(nn.Module):
-    def __init__(self, max_words):
+    def __init__(self, max_words, device):
         super().__init__()
         self.model = DistilBertModel.from_pretrained('distilbert-base-uncased')
         self.tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
         self.name = 'DistilBERT'
         self.max_words = max_words
         self.embedding_size = self.model.config.dim
+        self.device = device
 
-    def embed_lyrics(self, data, device):
+    def embed_lyrics(self, data):
         embeddings = np.empty((data.shape[0], self.embedding_size))
         for i, lyric in enumerate(data):
             encoding = self.tokenizer.encode_plus(
@@ -46,8 +47,8 @@ class DistilBERT(nn.Module):
                 return_tensors='pt',
             )
 
-            input_ids = encoding['input_ids'].to(device)
-            attention_mask = encoding['attention_mask'].to(device)
+            input_ids = encoding['input_ids'].to(self.device)
+            attention_mask = encoding['attention_mask'].to(self.device)
             with torch.no_grad():
                 model_output = self.model(
                         input_ids=input_ids,
