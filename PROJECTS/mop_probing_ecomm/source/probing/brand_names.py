@@ -39,7 +39,7 @@ def prepare_new_dataset(train_df, brands):
     ids.extend(train_df["id_left"].unique().tolist())
     ids.extend(train_df["id_right"].unique().tolist())
     ids = np.array(list(set(ids)))
-
+    np.random.seed(42)
     remove_brand_mask = np.random.choice([True, False], size =len(ids))
     
     ids_removed_brands = ids[remove_brand_mask]   
