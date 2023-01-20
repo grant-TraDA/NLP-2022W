@@ -61,6 +61,6 @@ XGBoost \cite{xgboostRef} is a decision-tree based algorithm that uses a gradien
 
 Convolutional Neural Networks are one of the primarily used types of neural networks used commonly in both image and text classification \cite{cnnRef}. Their main feature is using layers with convolution filters that are applied to feature vectors.
 
-\subsection{Adding title to song lyrics}
+\subsection{Adding title to song lyrics}\label{title}
 When it comes to the additional approach that we tried, i.e. adding title to the song lyrics, it can be described in the following way. Normally we would input the song lyrics into the embedding model and then provide the output to the classifier. Instead, we independently produce the embeddings of the lyrics and the title and combine these two vectors together by putting the title vector first and the lyrics vector right beside. Then, the resulting vector is inserted to the classifier.
 
