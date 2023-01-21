@@ -6,6 +6,7 @@ from joblib import dump, load
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import SGDClassifier
 from tensorflow.keras import layers, models
+from sklearn import preprocessing
 tf.get_logger().setLevel('ERROR')
 
 class NLPClassifier(ABC):
@@ -88,19 +89,15 @@ class CNN(CNNClassifier):
         self.name = 'cnn'
 
         model = models.Sequential()
-        model.add(layers.Conv1D(8, 3, padding='same', activation='relu', input_shape=(vec_len, 1)))
+        model.add(layers.Conv1D(16, 3, padding='same', activation='relu', input_shape=(vec_len, 1)))
         model.add(layers.MaxPooling1D(2, strides=2))
-        model.add(layers.Dropout(0.05))
-        model.add(layers.Conv1D(16, 3, padding='same', activation='relu'))
-        model.add(layers.MaxPooling1D(2, strides=2))
-        model.add(layers.Dropout(0.05))
-        model.add(layers.Conv1D(32, 3, padding='same', activation='relu'))
         model.add(layers.Flatten())
         model.add(layers.Dense(128, activation='relu'))
+        model.add(layers.Dropout(0.1))
         model.add(layers.Dense(class_count, activation='softmax'))
 
         model.compile(optimizer=optimizer,
-                      loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                      loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
                       metrics=['accuracy'])
 
         self.model = model
@@ -112,11 +109,9 @@ class BinaryCNN(CNNClassifier):
         model = models.Sequential()
         model.add(layers.Conv1D(8, 3, padding='same', activation='relu', input_shape=(vec_len, 1)))
         model.add(layers.MaxPooling1D(2, strides=2))
-        model.add(layers.Dropout(0.05))
-        model.add(layers.Conv1D(16, 3, padding='same', activation='relu'))
-        model.add(layers.MaxPooling1D(2, strides=2))
         model.add(layers.Flatten())
-        model.add(layers.Dense(128, activation='relu'))
+        model.add(layers.Dense(64, activation='relu'))
+        model.add(layers.Dropout(0.1))
         model.add(layers.Dense(1, activation='sigmoid'))
 
         model.compile(optimizer=optimizer,
@@ -133,11 +128,15 @@ class BinaryCNN(CNNClassifier):
         pass
 
 class CNN2Step(CNNClassifier):
-    def __init__(self, vec_len, class_count, optimizer, indiv_class):
+    def __init__(self, vec_len, class_count, optimizer, indiv_class, label_encoder):
         self.name = '2_step_cnn'
         self.model1 = BinaryCNN(vec_len, optimizer)
         self.model2 = CNN(vec_len, class_count - 1, optimizer)
-        self.indiv_class = indiv_class
+        self.indiv_class = label_encoder.transform([indiv_class])[0]
+        self.le = preprocessing.LabelEncoder()
+        classes = label_encoder.transform(label_encoder.classes_).tolist()
+        classes.remove(self.indiv_class)
+        self.le.fit(classes)
 
     def partial_fit(self, X, Y, classes):
         Y_binary = np.array(Y == self.indiv_class).astype(int)
@@ -145,12 +144,14 @@ class CNN2Step(CNNClassifier):
         
         X_other = X[Y != self.indiv_class]
         Y_other = Y[Y != self.indiv_class]
+        Y_other = self.le.transform(Y_other)
         self.model2.partial_fit(X_other.reshape(*X_other.shape, 1), Y_other.reshape(-1, 1), classes)
 
     def predict(self, X):
         pred1 = self.model1.predict(X.reshape(*X.shape, 1))
         X2 = X[pred1 == 0]
         pred2 = self.model2.predict(X2.reshape(*X2.shape, 1))
+        pred2 = self.le.inverse_transform(pred2)
         
         pred = np.zeros(len(X), dtype=int)
         pred[pred1 == 1] = self.indiv_class
