@@ -1,0 +1,494 @@
+ingredients_list,gpt-3_classification
+"water
+grits
+salt
+cheddar cheese
+garlic
+olive oil","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Low-Carb': False, 'Low-Fat': False, 'Keto': False}"
+"onion
+red bell pepper
+garlic cloves
+large shrimp
+salt
+hot pepper sauce
+vegetable oil
+andouille sausage
+long grain rice
+bay leaves
+diced tomatoes
+clam juice
+fresh parsley","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Keto': False, 'Paleo': False}"
+"white beans
+canned black beans
+tomatoes
+onion
+celery
+white wine vinegar
+italian parsley
+table salt
+black pepper
+olive oil","{'Vegan': True, 'Vegetarian': True, 'Gluten-Free': True, 'Dairy-Free': True, 'Low-Carb': False, 'Low-Fat': False, 'Keto': False}"
+"zucchini
+yellow squash
+diced tomatoes
+onion
+garlic
+green bell pepper
+italian seasoning
+water
+salt and pepper","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True}"
+"beef stew meat
+flour
+salt
+allspice
+cinnamon
+black pepper
+vegetable oil
+onions
+dried sour cherries
+sugar
+water
+dry red wine
+beef stock
+mushroom","{'vegetarian': False, 'vegan': False, 'gluten_free': False, 'dairy_free': True, 'nut_free': True}"
+"slivered almonds
+cider vinegar
+sugar
+sugar
+salt
+ground cumin
+ground coriander
+cayenne pepper","{'Vegan': True, 'Vegetarian': True, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': False, 'Soy-Free': True, 'Low-Carb': False, 'Low-Sugar': False}"
+"chicken breasts
+green onion
+red bell pepper
+parsley
+mayonnaise
+sour cream
+lemon juice
+dijon mustard
+salt %26 pepper
+cheddar cheese
+potato chips","{'vegetarian': False, 'vegan': False, 'gluten_free': True, 'dairy_free': False, 'nut_free': True}"
+"eggs
+milk
+fresh sage
+fresh thyme
+garlic cloves
+pecorino cheese
+asparagus
+extra virgin olive oil","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Nut-Free': True}"
+"butter
+onion
+garlic
+potatoes
+flour
+milk
+black pepper
+nutmeg
+creamed corn
+low sodium chicken broth
+lump crabmeat
+cayenne pepper
+parsley","{'Vegetarian': ['onion', 'garlic', 'potatoes', 'flour', 'milk', 'black pepper', 'nutmeg', 'creamed corn', 'parsley'], 'Low Sodium': ['low sodium chicken broth'], 'Seafood': ['lump crabmeat'], 'Spicy': ['cayenne pepper'], 'Dairy': ['butter', 'milk', 'creamed corn']}"
+"lean ground beef
+ketchup
+heinz chili sauce
+white vinegar
+sugar
+prepared yellow mustard
+onion powder","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True}"
+"butter
+granulated sugar
+baking powder
+salt
+vanilla extract
+eggs
+milk
+whole wheat flour
+chocolate chips
+decorator sugar","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Sugar-Free': False}"
+"all-purpose flour
+baking soda
+nutmeg
+margarine
+sugar
+dark brown sugar
+egg
+egg white
+vanilla
+potato chips
+semi-sweet chocolate chips","{'Gluten-Free': False, 'Vegan': False, 'Vegetarian': True, 'Keto': False, 'Paleo': False, 'Low-Carb': False, 'Low-Fat': False, 'Sugar-Free': False}"
+"unsalted beef stock
+onion
+carrot
+bay leaf
+thyme
+whole black peppercorn
+black peppercorns
+green peppercorn
+new york strip steaks
+vegetable oil
+unsalted butter
+shallots
+cognac
+dry white wine
+parsley","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Nut-Free': True, 'Soy-Free': True, 'Keto': False, 'Low-Carb': False, 'Paleo': False}"
+"button mushrooms
+portabella mushrooms
+olive oil
+butter
+shallots
+garlic cloves
+salt
+wonton wrappers
+cornstarch
+1%25 low-fat milk
+all-purpose flour
+fresh parmesan cheese
+fresh chives
+salt
+fresh ground black pepper","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Low-Fat': True, 'Low-Carb': False}"
+"shortcake cups
+ice cream
+hot fudge
+whipped cream
+strawberry","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Nut-Free': False}"
+"vegetable oil
+vegetable oil
+corn on the cob
+red bell pepper
+chicken breast tenders
+poultry seasoning
+cumin
+salt and pepper
+zucchini
+yellow onion
+garlic cloves
+chipotle chile in adobo
+stewed tomatoes
+tomato sauce
+chicken stock
+blue corn tortilla chips
+cheddar cheese
+sour cream
+red onion
+cilantro
+avocado
+lemon%2c juice of","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"butter
+shallots
+prawns
+garlic clove
+gruyere
+cornflour
+pear cider
+hot pepper sauce
+fresh parsley
+vegetables","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Nut-Free': True}"
+"water
+low sodium chicken broth
+plantains
+unsalted butter
+extra virgin olive oil
+leek
+fresh thyme
+fresh italian parsley
+sour cream
+ground cumin
+pecans
+butter","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Low-Sodium': True, 'Low-Fat': False, 'Paleo': False, 'Keto': False}"
+"pickling cucumbers
+kosher salt
+garlic
+coriander seed
+black peppercorns
+fresh dill
+ice
+grape leaves
+water","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Kosher': True, 'Paleo': False, 'Low-Carb': True, 'Low-Sodium': False}"
+"elbow macaroni
+ground beef
+onion
+chili without beans
+cottage cheese
+corn chips
+salt
+chili powder
+buttered bread crumb","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Nut-Free': True, 'Soy-Free': True}"
+"onion
+green pepper
+carrots
+celery rib
+frozen corn
+black beans
+pink beans
+crushed pineapple in juice
+french lentils
+diced tomatoes with juice
+tomato soup
+water
+chili powder
+garlic powder
+cumin
+cayenne pepper
+liquid smoke","{'Vegetarian': True, 'Vegan': True, 'Gluten-Free': True, 'Dairy-Free': True, 'Low-Carb': False, 'Low-Fat': False, 'Paleo': False, 'Keto': False}"
+"coriander
+ginger
+cardamom
+cumin
+cinnamon
+turmeric
+black pepper
+mace
+cayenne pepper
+clove","{'Vegan': True, 'Vegetarian': True, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True, 'Soy-Free': True}"
+"bittersweet chocolate chips
+sugar
+flour
+kosher salt
+eggs
+kefir
+vanilla
+pie crusts","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Kosher': True}"
+"fresh mushrooms
+margarine
+olive oil
+eggs
+garlic salt
+italian seasoning
+parsley flakes
+ricotta cheese
+part-skim mozzarella cheese
+italian cheese blend
+pasta sauce","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"heavy cream
+vanilla bean
+sugar
+eggs
+egg yolks
+dark brown sugar
+fresh raspberry
+vanilla bean
+baking chocolate
+pralines
+pecans
+coffee beans
+bananas
+butter
+brandy
+brown sugar","{'dairy': ['heavy cream', 'butter'], 'eggs': ['eggs', 'egg yolks'], 'sugar': ['sugar', 'dark brown sugar', 'brown sugar'], 'fruits': ['fresh raspberry', 'bananas'], 'nuts': ['pecans', 'pralines'], 'coffee': ['coffee beans'], 'alcohol': ['brandy'], 'baking': ['baking chocolate', 'vanilla bean']}"
+"racks of lamb
+oil
+garlic
+peppercorn
+salt","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True}"
+"self rising flour
+butter
+superfine sugar
+chocolate chips
+milk","{'Gluten-Free': False, 'Vegan': False, 'Vegetarian': True, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"frozen pie crusts
+italian sausage
+onion
+mushrooms
+mozzarella cheese
+parmesan cheese
+pizza sauce
+italian seasoning
+parmesan cheese","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"ground almonds
+granulated sugar
+lemons%2c zest of
+eggs
+cornflour
+sugar syrup
+icing sugar","{'Vegetarian': True, 'Gluten-Free': False, 'Dairy-Free': True, 'Nut-Free': False, 'Soy-Free': True, 'Keto': False, 'Low-Carb': False}"
+"large shrimp
+soy sauce
+garlic clove
+vegetable oil
+red bell pepper
+onion
+snow peas
+water
+pepper
+rice","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True}"
+"bacon
+ground pork
+garlic clove
+thyme
+kosher salt
+fresh ground pepper
+red onions
+olive oil
+hamburger buns
+unsalted butter
+camembert cheese
+gorgonzola
+arugula
+tomatoes","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Kosher': True, 'Halal': False}"
+"unsalted butter
+sugar
+all-purpose flour
+baking soda
+salt
+eggs
+walnuts
+vanilla
+red food coloring
+blue food coloring
+icing sugar
+red food coloring","{'unsalted butter': 'dairy', 'sugar': 'refined sugar', 'all-purpose flour': 'gluten', 'baking soda': 'sodium', 'salt': 'sodium', 'eggs': 'animal protein', 'walnuts': 'nuts', 'vanilla': 'flavoring', 'red food coloring': 'artificial coloring', 'blue food coloring': 'artificial coloring', 'icing sugar': 'refined sugar'}"
+"egg yolks
+caster sugar
+cream cheese
+lime curd
+double cream
+milk","{'vegetarian': False, 'vegan': False, 'gluten_free': True, 'dairy_free': False, 'nut_free': True}"
+"dried pinto beans
+water
+vegetable oil
+yellow onions
+salt
+fresh ground black pepper
+garlic cloves
+chicken stock
+plum tomatoes
+red onion
+fresh cilantro
+lime%2c juice of
+salt %26 freshly ground black pepper
+crema","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True}"
+"shrimp
+olive oil
+kosher salt
+fresh ground black pepper","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Kosher': True}"
+"butter
+light brown sugar
+white sugar
+heavy whipping cream
+nutmeg
+brie cheese
+pecans","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Nut-Free': False}"
+"mascarpone
+eggs
+sugar
+marsala wine
+espresso coffee
+ladyfingers
+unsweetened cocoa powder
+sweetened cocoa powder","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Sugar-Free': False}"
+"white rum
+maraschino juice
+lime%2c juice of
+grapefruit juice
+blue curacao
+pineapple juice","{'Vegan': False, 'Vegetarian': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True}"
+"yellow cornmeal
+flour
+sugar
+baking powder
+salt
+allspice
+fresh ground white pepper
+egg
+milk
+vegetable shortening
+shortening","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Nut-Free': True}"
+"monterey jack cheese
+plain breadcrumbs
+kosher salt
+green onions
+fresh basil
+tabasco sauce
+dry white wine
+fresh lemon juice
+garlic clove
+egg
+fresh crabmeat
+button mushrooms
+cooking oil","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Kosher': True, 'Paleo': False, 'Low-Carb': False}"
+"potatoes
+cream of mushroom soup
+cream of chicken soup
+evaporated milk
+salt and pepper
+cheddar cheese","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"potatoes
+butter
+salt
+milk
+chicken gravy
+black pepper","{'Vegetarian': True, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Nut-Free': True}"
+"frozen blackberries
+cranberry sauce
+sugar
+water
+flour","{'Vegan': False, 'Vegetarian': True, 'Gluten-Free': False, 'Dairy-Free': True, 'Sugar-Free': False}"
+"skinless chicken breasts
+carrots
+celery
+parsnip
+leek
+green beans
+parsley
+garlic clove
+chicken stock
+water
+salt %26 pepper","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Low-Carb': True, 'Low-Fat': True, 'Paleo': False}"
+"cream cheese
+sour cream
+old bay seasoning
+lemon juice
+cayenne pepper
+worcestershire sauce
+chili powder
+cooked shrimp","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"ground beef
+onion
+tomato sauce
+spaghetti sauce mix
+sour cream
+mozzarella cheese
+crescent roll dough","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Keto': False, 'Paleo': False}"
+"mayonnaise
+cider vinegar
+fresh lemon juice
+black pepper
+cayenne pepper","{'Vegan': False, 'Vegetarian': True, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True, 'Soy-Free': True}"
+"butter
+sugar
+eggs
+almond extract
+flour
+baking powder
+salt
+evaporated milk
+maraschino cherries
+icing sugar","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Nut-Free': False}"
+"butter
+sugar
+egg
+vanilla extract
+flour
+salt
+flaked coconut
+baking powder
+green food coloring
+dried cranberries
+red food coloring
+almond extract","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': False, 'Dairy-Free': False, 'Sugar-Free': False, 'Low-Carb': False, 'Keto': False, 'Paleo': False}"
+"meat
+garlic cloves
+fresh gingerroot
+dried red chilies
+water
+ground cumin
+ground coriander
+ground turmeric
+vegetable oil
+whole cumin seeds
+salt
+sugar
+lemon juice","{'Vegetarian': False, 'Vegan': False, 'Gluten-Free': True, 'Dairy-Free': True, 'Nut-Free': True}"

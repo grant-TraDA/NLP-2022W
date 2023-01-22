@@ -1,0 +1,14 @@
+{
+    "ingredients_extraction": [
+        "Extract only names of ingredients in json format from text below\nINPUT_TEXT\n"
+    ],
+    "specified_dietary_tags_classification": [
+        "Return json which has true if dietary tags from list below\nDIETARY_TAGS\nmatch below ingredients:\nINPUT_TEXT"
+    ],
+    "dietary_tags_classification": [
+        "Give me list of dietary tags based on below ingredients in json format\nINPUT_TEXT\nDietary tags: "
+    ],
+    "single_dietary_tags_classification": [
+        "Does dietary tag \"DIETARY_TAG\" fit below recipe ingredients answer only True or False:\nINPUT_TEXT\nAnswer: "
+    ]
+}
