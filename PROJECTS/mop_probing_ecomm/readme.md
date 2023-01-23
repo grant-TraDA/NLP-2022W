@@ -72,7 +72,7 @@ You can find the dataset at [Kaggle](https://www.kaggle.com/competitions/quora-q
  - calculating embeddings using the model before fine-tuning to analyze the influence of fine-tunning on the space
  - performing probing tasks from the Project #1 on embeddings obtained both before and after fine-tunning:
     - **Common words**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict whether the offer contains at least one of the common words
-    (computer', 'laptop', 'processor', 'gpu', 'cpu', 'hdd', 'ssd', 'memory');
+    ('computer', 'laptop', 'processor', 'gpu', 'cpu', 'hdd', 'ssd', 'memory');
     - **Brand name**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict whether the offer contains a brand name (e.g., 'Samsung') or not;
     - **Length of sentences**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict the length of the input (string containing the offer);
 
