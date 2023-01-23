@@ -5,7 +5,6 @@ project1/code/figs/*
 project1/code/__pycache__/*
 
 project2/code/data/*
-project2/code/models/*
 project2/code/predictions/*
 project2/code/training/*
 project2/code/figs/*
