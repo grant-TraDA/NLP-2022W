@@ -1,20 +1,41 @@
-from os import path
-import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-
 # setting path
 import os
+from os import path
+
+import os, sys
+
+current_dir = os.path.abspath("")
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
 
-# current_dir = os.path.abspath("")
-# parent_dir = os.path.dirname(current_dir)
-# sys.path.append(parent_dir)
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
+import warnings
+
+warnings.filterwarnings("ignore")
 
 
-from source.utils.probing_tasks_utils import test_probing_task
+def test_probing_task(X_train, X_test, y_train, y_test, clf):
+
+    if type(clf) == XGBClassifier:
+        clf.fit(X_train, y_train, eval_metric="mlogloss")
+    else:
+        clf.fit(X_train, y_train)
+
+    predictions = clf.predict(X_test)
+    acc = accuracy_score(y_true=y_test, y_pred=predictions)
+    f_score = f1_score(y_true=y_test, y_pred=predictions, average="macro")
+
+    # print(f"Accuracy: {acc}, f_score: {f_score}")
+
+    return (predictions, acc, f_score)
 
 
 def test_visualize_probing_task(

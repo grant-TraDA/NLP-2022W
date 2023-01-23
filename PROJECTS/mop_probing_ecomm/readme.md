@@ -71,13 +71,18 @@ You can find the dataset at [Kaggle](https://www.kaggle.com/competitions/quora-q
  - calculating embeddings for each offer using the fine-tuned model
  - calculating embeddings using the model before fine-tuning to analyze the influence of fine-tunning on the space
  - performing probing tasks from the Project #1 on embeddings obtained both before and after fine-tunning:
-   - **Probing1**: TO DO
-   - **Probing2**: TO DO
+    - **Common words**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict whether the offer contains at least one of the common words
+    (computer', 'laptop', 'processor', 'gpu', 'cpu', 'hdd', 'ssd', 'memory');
+    - **Brand name**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict whether the offer contains a brand name (e.g., 'Samsung') or not;
+    - **Length of sentences**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict the length of the input (string containing the offer);
+
  - designing new probing tasks and performing them on embeddings obtained both before and after fine-tunning
+    - **The Similarity distance**: TO DO
  - applying the probing tasks for embeddings obtained both before and after fine-tunning obtained on a "natural" dataset (without specialized words such as: model series number etc.) - the Quora Question Pairs dataset, serving as a "natural" point of reference. 
  - since not all probing tasks designed for the WDC dataset were easy to apply to the "natural dataset" (e.g., brand names), we provided some similar replacements:
-   - **Probing1**: TO DO
-   - **Probing2**: TO DO
+    - **Wh-words**: the goal was to build a classifier, that based on the embedding of an sentence, tried to predict whether the string contains at least one of the wh-words
+    ('what', 'which', 'who', 'why');
+    - **Named Entity**: The goal was to build a classifier that, based on the embedding of a sentence, tried to predict whether the sentence contains a named entity (e.g., 'Google', 'Harry Potter'). The label were created using another language-based model - Named Entity Recognition `bert-base-NER`;
 
 ---
 
@@ -106,7 +111,8 @@ Project #2 notebooks:
 - `computers_embeddings.ipynb`: this notebook is meant to be run on Google Colab environment. It was used for fine-tuning of the `xlm-roberta-base` model, embedding extraction and saving results.
 - `natural_dataset_embeddings.ipynb`: this notebook is meant to be run on Google Colab environment. We used it with the 'natural' dataset - fine-tunning of the `xlm-roberta-base` model, embedding extraction and saving results.
 - `SentEval_probings.ipynb`: this notebook is meant to be run on Google Colab environment. It demonstrates using of the `SentEval` library to perform probing tasks.
-- TO DO
+- `probing_tasks_brands.ipynb`, `probing_tasks_keywords.ipynb`, `probing_tasks_sentance_len.ipynb`: in these notebooks, embeddings for probing task classifier are created. Dataframes with calulated embeddings with coresponding labels are saved to `datasets/<dataset_name>/embeddings<model_type>/embeddings_for_probing_task_input` directory.
+- `ner_creating_labels.ipynb`: this notebook is meant to be run on Google Colab environment. It was used for creating labels for *named entity* probing task using `bert-base-NER` model.
 
 
 ### Source code
@@ -143,11 +149,11 @@ The directories `POC` (for Project #1) and `POC2` (for Project #2) contain the s
 
 ### Dataset
 
-The directory `datasets` contains data used in the project.
+The directory `datasets` contains data used in the project. In addition, in the directory new embeddings using for training probing tasks are saved.
 
 ### Report and Presentation
 
-In directory `project1_output/Final_report_and_presentation` the final Report pdf file, final tex file and presentation is provided.
+In directory `project1_output/Final_report_and_presentation` (for Project #1) and `project2_output/Final_report_and_presentation` (for Project #2) the final Report pdf file, final tex file and presentation is provided.
 
 ---
 
@@ -155,6 +161,8 @@ In directory `project1_output/Final_report_and_presentation` the final Report pd
 ## Reproducibility 
 As we described in Section `Usage`, we attached fine-tuned models with files describing the fine-tunning process.
 We also uploaded scripts for fine-tunning, embedding extraction and probing tasks.
+
+We believe that notebooks are a convenient form of code maintenance and reproduction. Notebooks are well commented and divided into appropriate probing tasks.
 
 ---
 

@@ -6,9 +6,8 @@ import sys
 current_dir = os.path.abspath("")
 parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
-from source.probing.testing import test_visualize_probing_task
-from source.utils.probing_tasks_utils import *
-from config import BASE_PATH, REPO_PATH
+from config import REPO_PATH
+from testing import test_visualize_probing_task
 
 TYPES = ["computers", "cameras", "natural"]
 MODEL_TYPES = ["pre_trained", "fine_tuned"]
@@ -44,7 +43,7 @@ for TYPE in TYPES:
             file_name = file_name[11:]
             test_visualize_probing_task(
                 file,
-                f"{file_name}_{MODEL_TYPE}",
+                f"_{TYPE}_{file_name}_{MODEL_TYPE}",
                 EMBEDDING_PATH_PROBING,
                 REPO_PATH,
                 TYPE,
