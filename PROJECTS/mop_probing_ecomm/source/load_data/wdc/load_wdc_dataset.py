@@ -7,6 +7,14 @@ from zipfile import ZipFile
 
 import ssl
 
+import os, sys
+
+current_dir = os.path.abspath("")
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+from config import RAW_DATASET_PATH
+
 
 class EnglishDatasetLoader:
     MAIN_DIR_PATH = (
@@ -22,9 +30,11 @@ class EnglishDatasetLoader:
         Returns:
             pd.DataFrame: training dataset
         """
-        p = Path(os.path.join("trainsets", f"{type}_train"))
-        p.mkdir(parents=True, exist_ok=True)
-        dataset_path = f"{p}/{type}_train_{size}.json.gz"
+        p = os.path.join(RAW_DATASET_PATH, f"raw_train")
+
+        dataset_path = os.path.join(
+            RAW_DATASET_PATH, f"raw_train", f"{type}_train_{size}.json.gz"
+        )
         if not os.path.exists(dataset_path):
             zip_path = f"{p}.zip"
             url = f"{EnglishDatasetLoader.MAIN_DIR_PATH}/trainsets/{type}_train.zip"
@@ -32,6 +42,7 @@ class EnglishDatasetLoader:
             open(zip_path, "wb").write(r.content)
             with ZipFile(zip_path, "r") as zip:
                 zip.extractall(path=p)
+            os.remove(zip_path)
 
         df = pd.read_json(dataset_path, compression="gzip", lines=True)
         return df.reset_index()
