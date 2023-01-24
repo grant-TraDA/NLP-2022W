@@ -72,12 +72,12 @@ You can find the dataset at [Kaggle](https://www.kaggle.com/competitions/quora-q
  - calculating embeddings using the model before fine-tuning to analyze the influence of fine-tunning on the space
  - performing probing tasks from the Project #1 on embeddings obtained both before and after fine-tunning:
     - **Common words**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict whether the offer contains at least one of the common words
-    (computer', 'laptop', 'processor', 'gpu', 'cpu', 'hdd', 'ssd', 'memory');
+    ('computer', 'laptop', 'processor', 'gpu', 'cpu', 'hdd', 'ssd', 'memory');
     - **Brand name**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict whether the offer contains a brand name (e.g., 'Samsung') or not;
     - **Length of sentences**: the goal was to build a classifier, that based on the embedding of an offer, tried to predict the length of the input (string containing the offer);
 
  - designing new probing tasks and performing them on embeddings obtained both before and after fine-tunning
-    - **The Similarity distance**: TO DO
+    - **The Similarity distance**:  Instead of operating on single offers (embeddings) in this probing task, we return to the concept of offer pairs from the WDC dataset. For each offer A and offer B from the pair, we calculate one of the three metrics: Levenshtein distance, the Jaccard metric or the Jaro–Winkler distance, obtaining a new target variable for probing, which denotes the similarity of the sentences (strings) in the pair. The variable is further discretized into five classes ('Similar,' 'Quite similar,' 'Neutral,' 'Hardly similar,' and 'Not similar'). The embedding of offer A and the embedding of offer B are passed as input to the probing classifier. The goal is to predict the similarity of sentences calculated using the one of the distances - similarity of two strings using Jaccard metric or the smallest number of edit operations required to transform one string into another.
  - applying the probing tasks for embeddings obtained both before and after fine-tunning obtained on a "natural" dataset (without specialized words such as: model series number etc.) - the Quora Question Pairs dataset, serving as a "natural" point of reference. 
  - since not all probing tasks designed for the WDC dataset were easy to apply to the "natural dataset" (e.g., brand names), we provided some similar replacements:
     - **Wh-words**: the goal was to build a classifier, that based on the embedding of an sentence, tried to predict whether the string contains at least one of the wh-words
