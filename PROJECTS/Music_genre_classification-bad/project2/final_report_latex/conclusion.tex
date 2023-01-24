@@ -1,0 +1,11 @@
+\section{Conclusion}\label{conclusion}
+
+Music genre classification performance seems to be limited strictly by the lyrics embedding quality. The most significant improvements were observed when switching to embedding models with substantially different complexity. This suggests that further improvements in this field may be achieved just by scaling up the embedding models. 
+On the other hand, the typical procedure of fine-tuning pre-trained general language models, done  on presented music genre data, did not bring significant improvements when compared to using just pre-trained models.
+
+Fusing lyrics data, in the form of embeddings, with the sentiment of the lyrics did not bring significant improvements when tested in different settings.
+
+The fusion of two models in the form of a 2-step classifier gives better results when it comes to balanced accuracy but worse overall. The problem may be that errors from the two models accumulate when they are used together. However, this approach can still be useful depending on the task at hand.
+
+In the case of small datasets, simpler classifiers may give better results and are faster than training e.g. CNNs for multiple epochs.
+ 
