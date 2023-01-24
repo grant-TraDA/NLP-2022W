@@ -21,6 +21,7 @@ tion (MID) using multiple datasets.
   the report and presentation
 * **./NLP_Project_1___Fake_News_Detection.pdf** : the report for our project (overleaf link provided below)
 * **./presentation.pdf** : presentation used for our first milestone (overleaf link provided below)
+* **./project2/**: the second project, which is the extension of the Fake News Detection topic
 
 **Overleaf project link :** https://www.overleaf.com/5826868425nddbrdzvfpsf
 (This includes second project proposal called "project2-proposal.tex")
