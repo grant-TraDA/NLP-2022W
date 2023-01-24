@@ -37,7 +37,7 @@ def get_natural_dataset(path, input_file_name):
         axis=1,
     )
 
-    X_train.to_csv(os.path.join(path, "df_train.csv"), index=True)
-    X_test.to_csv(os.path.join(path, "df_test.csv"), index=True)
+    X_train.to_csv(os.path.join(path, "df_train.csv"), index=False)
+    X_test.to_csv(os.path.join(path, "df_test.csv"), index=False)
 
     return X_train, X_test

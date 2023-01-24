@@ -9,11 +9,12 @@ from source.emb_extr_res.emb_extr_res import get_embeddings_df
 from source.load_data.natural.natural import get_natural_dataset
 import pandas as pd
 
-def load_files_probing_tasks(EMBEDDING_PATH, DATA_PATH, TYPE, SIZE):
+
+def load_files_probing_tasks(EMBEDDING_PATH_RAW, DATA_PATH, TYPE, SIZE):
 
     # paths to embeddings
-    test_embeddings_path = os.path.join(EMBEDDING_PATH, r"test_embeddings.csv")
-    train_embeddings_path = os.path.join(EMBEDDING_PATH, r"train_embeddings.csv")
+
+    train_embeddings_path = os.path.join(EMBEDDING_PATH_RAW, "train_embeddings.csv")
 
     # load embeddings
 
@@ -32,4 +33,4 @@ def load_files_probing_tasks(EMBEDDING_PATH, DATA_PATH, TYPE, SIZE):
     elif TYPE == "cameras":
         train_df = EnglishDatasetLoader.load_train(TYPE, SIZE)
 
-    return test_embeddings_path, train_embeddings_path, embedding_train_df, train_df
+    return train_embeddings_path, embedding_train_df, train_df
