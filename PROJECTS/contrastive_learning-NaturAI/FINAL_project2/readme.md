@@ -6,7 +6,7 @@ All notebooks were run on the Google Colab virtual environment and may contain p
 
 Data used in the experiments is available at https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
 
-Experiments were conducted on the Google colab platform. In order to run them, downloading the dataset and uploading it to the Google disk is necessary. 
+Experiments were conducted on the Google colab platform. In order to run them, downloading the dataset and uploading it to the Google drive is necessary. 
 
 There are several main scripts:
 * BERT_contrastive_voting_functions_tests - script that implements and tests contrastive learning + voting approach. The changed part when compared to project 2 is a new loss function inside training
