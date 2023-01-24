@@ -250,7 +250,7 @@ We also trained BERT-based models. Note that due to our computational limits, th
 
 \subsection{In life comparison}
 
-In order to assess the model performance in a more human-oriented, we verified the predictions on a few test samples by manually checking predictions. This is an additional way to judge the prediction performance. To add another source of data, we query the ChatGPT model to indicate spoilers in examples. Table \ref{tab:examplePrediction1} shows the real spoilers and models predictions in a sentence: \emph{Mila is quite interested in human society though she still prefers dolphins this starts to change as she regresses and she starts thinking more negative thoughts about humans}. Note that ground truth indicate the real spoilers. 
+In order to assess the model performance in a more human-oriented, we verified the predictions on a few test samples by manually checking forecasts. This is an additional way to judge the prediction performance. To add another data source, we query the ChatGPT model to indicate spoilers in examples. Table \ref{tab:examplePrediction1} shows the real spoilers and models predictions in a sentence: \emph{Mila is quite interested in human society though she still prefers dolphins this starts to change as she regresses and she starts thinking more negative thoughts about humans}. Note that ground truth indicates the real spoilers. 
 
 \begin{table*}[h]
     \centering
@@ -282,17 +282,18 @@ Table \ref{tab:examplePrediction2} indicates the model prediction for a sentence
 \end{table*}
 
 
-As shown, both tables confirm that the model's performance is promising. It seems that the model can understand plot twist and can point out important things for the plot.
+
+As shown, both tables confirm that the model's performance is promising. It seems that the model can understand plot twists and can point out important things in the plot.
 
 \section{Discussion} \label{discussion}
 
-Considering all the results, they may not seem satisfactory for binary classification task. However, note that it was the first such an approach and no reference scores are available. Therefore, we cannot really rate the models. Still, our goal was to provide some baselines and we hope that they will be surpassed in the future.
+Considering all the results, they may not seem satisfactory for the binary classification task. However, note that it was the first such an approach, and no reference scores are available. Therefore, we cannot really rate the models. Still, our goal was to provide some baselines, and we hope that they will be surpassed in the future.
 
-First, let us discuss the scores achieved for LSTM architectures. One can see that incorporating the attention layer increased the accuracy slightly. However, due to randomness, this difference should not be considered significant. The gaps in other evaluation scores become more visible. Implementation of attention involves approximately 9\% drop of recall. The precision increases by 4\%, so there is a standard recall-precision tradeoff.
+First, let us discuss the scores achieved for LSTM architectures. One can see that incorporating the attention layer increased the accuracy slightly. However, due to randomness, this difference should not be considered significant. The gaps in other evaluation scores become more visible. Implementation of attention involves approximately a 9\% drop in recall. The precision increases by 4\%, so there is a standard recall-precision tradeoff.
 
-It turns out that similar behavior is noticeable when comparing vanilla LSTM scores to the transformer architectures scores. Let us recall that transformer architectures employ attention. The accuracies slightly increase while the recall drops and precision grows. On average, taking into account vanilla LSTM and all BERT-based architectures, the recall drops about 21.5\% while the precision increases by about 14.5\%. These recall-precision differences are also reflected in Jaccard scores comparison. The balance between recall and precision can be relevant in business application. In such situation, the choice should be motivated by a specific use case.
+It turns out that similar behavior is noticeable when comparing vanilla LSTM scores to the transformer architecture scores. Let us recall that transformer architectures employ attention. The accuracies slightly increase while the recall drops and precision grows. On average, taking into account vanilla LSTM and all BERT-based architectures, the recall drops about 21.5\% while the precision increases by about 14.5\%. These recall-precision differences are also reflected in the Jaccard scores comparison. The balance between recall and precision can be relevant in business applications. In such a situation, the choice should be motivated by a specific use case.
 
-Finally, considering individual BERT-based models scores, one can conclude the following. The BERT and DistilBERT models turned out to offer similar scores with the remark that training DistilBERT is almost 2x shorter. Furthermore, a direct comparison between case sensitive and case insensitive versions provides an interesting perspective. Namely, the case sensitive versions offer larger recall and lower precision compared to their variants. As already noted, this may be expected due to suspected presence of proper nouns in spoilers. Still, we believe that the experiments should be repeated multiple times which we were not able to do due to computation constraints.
+Finally, considering individual BERT-based model scores, one can conclude the following. The BERT and DistilBERT models turned out to offer similar scores, with the remark that training DistilBERT is almost 2x shorter. Furthermore, a direct comparison between case-sensitive and case-insensitive versions provides an interesting perspective. Namely, the case-sensitive versions offer larger recall and lower precision compared to their variants. As already noted, this may be expected due to the suspected presence of proper nouns in spoilers. Still, we believe that the experiments should be repeated multiple times, which we were not able to do due to computation constraints.
 
 
 
@@ -300,11 +301,11 @@ Finally, considering individual BERT-based models scores, one can conclude the f
 \section{Conclusions and future work} \label{conclusions}
 
 
-Overall we are very much satisfied with the results, as all experiments were successfully carried out and yielded conclusive results. We were conducting experiments not present in previous scientific papers on the spoiler detection topic. Still, we find them valuable and hope to observe future interest.
+Overall we are very much satisfied with the results, as all experiments were successfully carried out and yielded conclusive results. We were conducting experiments not present in previous scientific papers on the spoiler detection topic. Still, we find them valuable and hope to observe future interests.
 
-Regarding the models, we compared LSTM architectures to BERT-based architectures. What we found quite surprising was that the choice of the model depends heavily on key performance indicator selected. It turned out, that state-of-the-art transformer architectures do not outperform LSTM models in all metrics. However this comparison featured only one dataset due to the lack of them.
+Regarding the models, we compared LSTM architectures to BERT-based architectures. What we found quite surprising was that the choice of the model depends heavily on the key performance indicator selected. It turned out that state-of-the-art transformer architectures do not outperform LSTM models in all metrics. However, this comparison featured only one dataset due to the lack of them.
 
-For future work, we believe that more extensive research on transformer models should be conducted, including repeating experiments multiple times, provided sufficient computational resources. Furthermore, we have another broad idea for approaching the problem. Namely, one may consider phrase extraction as named entity recognition task. For clarity, each spoiler phrase may be considered as an entity mention to be extracted. Then, state-of-the-art NER techniques could be employed.
+For future work, we believe that more extensive research on transformer models should be conducted, including repeating experiments multiple times, provided sufficient computational resources. Furthermore, we have another broad idea for approaching the problem. Namely, one may consider phrase extraction as a named entity recognition task. For clarity, each spoiler phrase may be considered as an entity mention to be extracted. Then, state-of-the-art NER techniques could be employed.
 
 
 Division of work:
