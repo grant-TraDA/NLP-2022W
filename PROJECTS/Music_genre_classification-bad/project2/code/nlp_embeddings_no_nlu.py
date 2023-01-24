@@ -5,8 +5,9 @@ from torch import nn
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, DistilBertTokenizer, DistilBertModel
 from sentence_transformers import SentenceTransformer
 
-class NLPEmbeddingTorch(ABC):
 
+class NLPEmbeddingTorch(ABC):
+    '''Abstract class of an embedding method based on torch.'''
     def __init__(self):
         self.model = None
         self.name = None
@@ -15,15 +16,30 @@ class NLPEmbeddingTorch(ABC):
         self.column = None
 
     def embed_lyrics(self, data):
+        '''
+        Embed lyrics of the data
+        Parameters:
+            data (Series): Lyrics of the data.
+        Returns:
+            ndarray: Embedded lyrics.
+        '''
         embeddings = self.model.predict(data, output_level='document')
         return np.array([self.__process_embedding(embedding) for embedding in embeddings[self.column]])
 
     def __process_embedding(self, embedding):
+        '''
+        Resize embedding to desired size and flatten the array.
+        Parameters:
+            embedding (ndarray): Embedded lyrics.
+        Returns:
+            ndarray: Processed embeddings.
+        '''
         embedding.resize((self.max_words, self.embedding_size), refcheck=False)
         return embedding.flatten()
 
 
 class DistilBERT(nn.Module):
+    '''DistilBERT embedding method.'''
     def __init__(self, max_words, device):
         super().__init__()
         self.model = DistilBertModel.from_pretrained('distilbert-base-uncased')
@@ -58,6 +74,7 @@ class DistilBERT(nn.Module):
 
 
 class SentenceTransformerMPNET(nn.Module):
+    '''SentenceTransformerMPNET embedding method.'''
     def __init__(self):
         super().__init__()
         self.model = SentenceTransformer('all-mpnet-base-v2')

@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from johnsnowlabs import nlu
 import numpy as np
 
+
 class NLPEmbedding(ABC):
     '''Abstract class of an embedding method.'''
     def __init__(self):
