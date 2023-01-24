@@ -15,7 +15,7 @@ There are several main scripts:
 
 We store saved models in the following files:
 * Siamese_sentence_model.zip 
-* https://drive.google.com/drive/folders/1_67V1FQEY1OmxL4F5nbUGR_SdZTaLedc?usp=sharing - all models trained with different augmentation methods (file names denote method_model_dataset used for training). 
+* https://drive.google.com/drive/folders/1_67V1FQEY1OmxL4F5nbUGR_SdZTaLedc?usp=sharing - all models trained with different augmentation methods (file names denote method_model_loss-function_dataset used for training). 
 
 Also, there are several other files presenting our trials, experiments (and sometimes failures)
 
