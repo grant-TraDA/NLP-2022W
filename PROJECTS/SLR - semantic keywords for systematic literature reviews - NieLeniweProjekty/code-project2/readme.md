@@ -11,8 +11,8 @@
         * ONTOLOGY_NAME - folder specific name for each ontology
             * annotations.csv - annoations present in CRAFT dataset from this ontology 
         * data_whole.csv - preprocessed CRAFT data (lemmatization, tokenization etc.)
-    ATTENTION: this folder was to big for github, hence it is on the drive - link https://drive.google.com/drive/folders/1eeKlWWfk3WOvIMi3mc2QTX3d9LUaCriY
-    To run scripts it needs to be placed according to the structure defined in readme
+    
+    ATTENTION: this folder (0.RESULTS) was to big for github, hence it is on the drive - link https://drive.google.com/drive/folders/1eeKlWWfk3WOvIMi3mc2QTX3d9LUaCriY
 
 * 1.DATA_PREPARATION 
     * CRAFT
@@ -42,3 +42,16 @@
     * disambiguation.ipynb - script for performing disambiguation
 * 5.EVALUATION
     * stats_craft.ipynb - calculates F1 score, recall and precision from e2e solution
+
+changes_for_poc2.md - what did we implement up to the poc2.
+changes_for_final_presentation.md - what did we implement from poc2 until the final project version.
+<hr style="border:2px solid gray">
+Steps to reproduce the results:
+
+1. Download `reproduce_script.rar` from https://drive.google.com/drive/folders/1-lAjO3VyEMt0KWbpxhLRIx_L7h_SIuaZ?usp=sharing
+2. `cd reproduce_script`
+3. Run script with: 
+	`python script.py` <br />
+	If you want to stop the program and run it later you can use timestamp from filenames of results for example:  <br />
+	`python script.py timestamp=2023-01-24_16-21-53`
+4. results will appear in 0.RESULTS folder 
