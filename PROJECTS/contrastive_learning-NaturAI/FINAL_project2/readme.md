@@ -14,8 +14,8 @@ There are several main scripts:
 * data_augmentation - scripts performing tests of data augmentation methods and experiments for methods: synonym replacement, embedding-based replacement, summarising text and back-translation.
 
 We store saved models in the following files:
-* Siamese_sentence_model.zip
-* https://drive.google.com/drive/folders/1_67V1FQEY1OmxL4F5nbUGR_SdZTaLedc?usp=sharing
+* Siamese_sentence_model.zip 
+* https://drive.google.com/drive/folders/1_67V1FQEY1OmxL4F5nbUGR_SdZTaLedc?usp=sharing - all models trained with different augmentation methods. 
 
 Also, there are several other files presenting our trials, experiments (and sometimes failures)
 
