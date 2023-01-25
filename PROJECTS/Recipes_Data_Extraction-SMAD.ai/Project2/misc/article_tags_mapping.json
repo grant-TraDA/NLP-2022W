@@ -1,0 +1,74 @@
+{
+  "pork": [
+    "bacon",
+    "ham",
+    "pork"
+  ],
+  "nuts-grains": [
+    "bean",
+    "nuts",
+    "grains"
+  ],
+  "meat": [
+    "beef",
+    "chicken",
+    "meat",
+    "steak",
+    "turkey",
+    "lamb",
+    "quail",
+    "rabbit",
+    "poultry"
+  ],
+  "gluten": [
+    "bread",
+    "pasta",
+    "spaghetti",
+    "macaroni",
+    "penne"
+  ],
+  "fish": [
+    "fish",
+    "cod",
+    "salmon",
+    "halibut",
+    "trout",
+    "seafood"
+  ],
+  "dairy": [
+    "cheese",
+    "lactose"
+  ],
+  "seafood": [
+    "crab",
+    "lobster",
+    "octopus",
+    "oysters",
+    "scallops",
+    "squid"
+  ],
+  "restrict diet": [
+    "dairy-free",
+    "gluten-free",
+    "hanukkah",
+    "high-calcium",
+    "high-fiber",
+    "high-protein kosher",
+    "jewish",
+    "low-carb",
+    "low-fat",
+    "low-protein",
+    "low-sodium",
+    "hashana vegan",
+    "vegetarian",
+    "healthy",
+    "diabetic"
+  ],
+  "egg": [
+    "egg",
+    "omelet"
+  ],
+  "shrimp": [
+    "shrimp"
+  ]
+}
