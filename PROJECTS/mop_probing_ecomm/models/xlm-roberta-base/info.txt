@@ -1,0 +1,18 @@
+
+
+This is the fine-tuned 'xlm-roberta-base' from the HuggingFace library (https://huggingface.co/xlm-roberta-base).
+
+The model was fine-tuned on the WDC dataset (category: 'Computers', size: 'medium'): https://data.dws.informatik.uni-mannheim.de/largescaleproductcorpus/data/v2/trainsets/computers_train.zip
+
+Fine-tunning code: SentenceTransformer library (see the notebook: 'project2_notebooks/computers_embeddings.ipynb')
+
+Hyperparameters:
+
+dataset_type = 'computers'
+dataset_size = 'medium'
+train_batch_size = 16
+num_epochs = 80
+warm_steps = len(training_dataset) * num_epochs  * 0.1
+train_loss = cosine similarity
+
+For more details please refer to the SentenceTransformer library documentation: https://www.sbert.net/examples/training/sts/README.html 
