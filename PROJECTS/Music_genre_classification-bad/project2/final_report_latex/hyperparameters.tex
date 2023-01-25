@@ -1,0 +1,42 @@
+\section{Hyperparameters of models}\label{hyperparameters}
+In the tables \ref{tab:h_emb}, \ref{tab:h_cls}, \ref{tab:h_other} we provide the hyperparameters of models. For our dataset and CNN and Dense classifiers the number of epochs was equal to 60 but for other datasets was equal to 5.
+
+\onecolumn
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|r}
+\textbf{Embedding} & \textbf{Library} & \textbf{Model name} & \textbf{Dimension} \\\hline
+GloVe & John Snow Labs Spark NLP & glove\_100d & 100 \\
+Smaller BERT & John Snow Labs Spark NLP & small\_bert\_L2\_128 & 128 \\
+\end{tabular}
+\caption{Hyperparameters of embeddings}
+\label{tab:h_emb}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|l}
+\textbf{Classifier} & \textbf{Library} & \textbf{Class} & \textbf{Optimizer} \\\hline
+Naive Bayes & sklearn & GaussianNB & - \\
+Linear SVM & sklearn & SGDClassifier & - \\
+XGBoost & xgboost & xgboost & - \\
+CNN & tensorflow.keras & Sequential & Adam \\
+2-step CNN & tensorflow.keras & Sequential & Adam \\
+DenseNet & tensorflow.keras & Sequential & Adam \\
+\end{tabular}
+\caption{Hyperparameters of classifiers}
+\label{tab:h_cls}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r}
+\textbf{Max. number of words in lyrics} \\\hline
+400 \\
+\end{tabular}
+\caption{Other hyperparameters}
+\label{tab:h_other}
+\end{table}
+
+\twocolumn

@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage{comment}
+\usepackage{acl2015}
+\setlength\titlebox{6cm}
+\usepackage{times}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{latexsym}
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{csquotes}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{svg}
+
+\title{Music genre classification based on song lyrics \\Final report for NLP Course, Winter 2022-2023}
+
+\author{Bartłomiej Eljasiak \\
+  Warsaw University of Technology \\
+  {\tt\small bartlomiej.eljasiak.stud@pw.edu.pl} \\\And
+  Aleksandra Nawrocka \\
+  Warsaw University of Technology \\
+  {\tt\small aleksandra.nawrocka.stud@pw.edu.pl} \\
+  \AND
+  Dominika Umiastowska \\
+  Warsaw University of Technology \\
+  {\tt\small dominika.umiastowska.stud@pw.edu.pl} \\\And 
+  supervisor: Anna Wróblewska\\
+  Warsaw University of Technology \\
+  {\tt\small anna.wroblewska1@pw.edu.pl}\\}
+
+\date{}
+
+\begin{document}
+\raggedbottom
+
+\maketitle
+
+\vspace{5em}
+
+\begin{abstract}
+
+Although a well-known task, music genre classification (MGC) remains challenging in the domain of Music Information Retrieval. We tackle the problem of MGC based solely on lyrics. Our main contribution is trying to improve the results we obtained during the first project by testing two new approaches: the addition of sentiment analysis and using two classifiers to address the imbalance of the dataset. Additionally, we prepared a new dataset and test some of the methods on it.
+
+\end{abstract}
+
+
+
+\input{introduction.tex}
+
+\input{related_work.tex}
+
+\input{approach.tex}
+
+\input{hyperparameters.tex}
+
+\input{experiments.tex}
+
+\input{conclusion.tex}
+
+\section{Team contribution}
+Self-assessed authors' contribution is in table \ref{tab:contribution}.
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{0.5\textwidth}{XXr}
+\textbf{Author} & \textbf{Contributions} & \textbf{Workload} \\\hline
+Bartłomiej \mbox{Eljasiak} & Changes to the repository, new embedding models, new embedding models fine-tuning, dense model addition, sentiment addition, sentiment influence analysis,  part of the report and presentation & 40\% (20h)\\\hline
+Aleksandra Nawrocka & Dataset creation, performing tests on the created dataset, part of the report and presentation & 30\% (15h) \\\hline
+Dominika \mbox{Umiastowska} &  Creating 2-step model, performing tests with this and other classifiers, part of report and presentation. & 30\% (15h) \\
+\end{tabularx}
+\caption{Authors' contribution}
+\label{tab:contribution}
+\end{table}
+
+\printbibliography
+
+\end{document}
+
+
